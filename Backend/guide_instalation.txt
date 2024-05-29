@@ -4,7 +4,7 @@
 
 * verificar si esta instalado Virtualenv y la version 
     - $ virtualenv --version
-        virtualenv 20.26.1 from /usr/local/lib/python3.10/dist-packages/virtualenv/__init__.py
+            virtualenv 20.26.1 from /usr/local/lib/python3.10/dist-packages/virtualenv/__init__.py
 
 * Luego instalamos nuestro entorno virtual en donde este nuestro proyecto
     - $ virtualenv venv
