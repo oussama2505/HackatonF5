@@ -4,6 +4,7 @@
 
 * verificar si esta instalado Virtualenv y la version 
     - $ virtualenv --version
+        virtualenv 20.26.1 from /usr/local/lib/python3.10/dist-packages/virtualenv/__init__.py
 
 * Luego instalamos nuestro entorno virtual en donde este nuestro proyecto
     - $ virtualenv venv
@@ -12,4 +13,23 @@
     - $ source venv/bin/activate
 
 ## Instalar Python Flask
- - $ pip install Flask
+    Chequear que version de python tenemos.
+    - $ python --version            ||           - $ python3 --version
+            -Python 3.10.12
+ - $ pip install Flask  
+    Crear el archivo main.py
+        Pegar el siguiente código
+
+        from flask import Flask
+
+
+        app = Flask(__name__)
+
+        @app.route("/")
+        def hello_world():
+            return "<p>Hello, World!</p>"
+
+        ## Pegar al pie del archivo para ejecutar el servidor local
+        if __name__ == "__main__":
+            app.run(debug=True, port="4000", host="0.0.0.0")
+
