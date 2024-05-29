@@ -1,7 +1,15 @@
-verificar si esta instalado Virtualenv y la version 
+## Instalar entorno virtual.
+
+* Moverse a la carpeta /home/alumno/HackatonF5/HackatonF5/Backend
+
+* verificar si esta instalado Virtualenv y la version 
     - $ virtualenv --version
-Luego instalamos nuestro entorno virtual en donde este nuestro proyecto
+
+* Luego instalamos nuestro entorno virtual en donde este nuestro proyecto
     - $ virtualenv venv
-Ahora activamos este entorno virtual
+
+* Ahora activamos este entorno virtual
     - $ source venv/bin/activate
 
+## Instalar Python Flask
+ - $ pip install Flask
