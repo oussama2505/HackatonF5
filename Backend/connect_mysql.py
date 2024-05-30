@@ -19,7 +19,7 @@ cursor1.execute("show tables")
 for tabla in cursor1:
     print(tabla)
 """ conexion1.close() """
-import mysql.connector
+
 
 
 ## Con esto hacemos la consulta! 
