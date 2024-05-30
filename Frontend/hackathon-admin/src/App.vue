@@ -1,12 +1,17 @@
 <template>
   <div id="app">
+    <AppHeader />
     <router-view></router-view>
   </div>
 </template>
 
 <script>
+import AppHeader from './components/AppHeader.vue'
 export default {
-  name: 'App'
+  name: 'App',
+  components:{
+    AppHeader
+  }
 };
 </script>
 
@@ -20,4 +25,4 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
 }
-</style>
+</style>./components/AppHeader.vue
