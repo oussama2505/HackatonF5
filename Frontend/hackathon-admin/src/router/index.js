@@ -1,12 +1,13 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import Dashboard from '../components/Dashboard.vue';
-import Login from '../components/Login.vue';
+import Home from '../Views/Home.vue';
+import Dashboard from '../Views/Dashboard.vue';
+import Groups from '../Views/Groups.vue';
 
 const routes = [
   {
-    path: '/login',
-    name: 'Login',
-    component: Login
+    path: '/groups',
+    name: 'Groups',
+    component: Groups
   },
   {
     path: '/dashboard',
@@ -16,22 +17,14 @@ const routes = [
   },
   {
     path: '/',
-    redirect: '/login'
-  }
+    name: 'Home',
+    component: Home
+  },
 ];
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes
-});
-
-router.beforeEach((to, from, next) => {
-  const token = localStorage.getItem('token');
-  if (to.matched.some(record => record.meta.requiresAuth) && !token) {
-    next('/login');
-  } else {
-    next();
-  }
 });
 
 export default router;
