@@ -6,17 +6,17 @@
     </div>
   </template>
   
+
   <script>
-  import { defineComponent } from 'vue';
-  import UploadForm from './UploadForm.vue';
-  import TeamsList from './TeamsList.vue';
+  import UploadForm from '../components/UploadForm.vue';
+  import TeamsList from '../components/TeamsList.vue';
   
-  export default defineComponent({
+  export default {
     name: 'Dashboard',
     components: {
       UploadForm,
       TeamsList
     }
-  });
+  };
   </script>
   
