@@ -1,12 +1,14 @@
 <!-- Dashboard.vue -->
 <template>
-  <Header />
-  <div>
-    <h1>Dashboard del Administrador</h1>
-    <UploadForm @fileParsed="handleFileParsed"/>
-    <TeamsList :participants="participants"/>
+  <div class="flex flex-col min-h-screen">
+    <Header />
+    <div class="flex-grow">
+      <h1>Dashboard del Administrador</h1>
+      <UploadForm @fileParsed="handleFileParsed"/>
+      <TeamsList :participants="participants"/>
+    </div>
+    <Footer />
   </div>
-  <Footer />
 </template>
 
 <script>
