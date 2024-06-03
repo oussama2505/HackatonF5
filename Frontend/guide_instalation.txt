@@ -1,0 +1,11 @@
+# instalar Node.js v16.20.2
+    node --version
+# instalar Vue/Cli :
+    npm install -g @vue/cli
+# instalar dependencias
+    npm install
+
+# instalar tailwind
+    npm install tailwindcss
+
+    
