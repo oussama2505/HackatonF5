@@ -1,0 +1,28 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "title": "Access API",
+      "version": "1.0.0"
+    },
+
+"paths": {
+    "/api/grupos": {
+      "get": {
+        "description": "Returns message showing app is up",
+        "produces": ["application/json"],
+        "responses": {"200": {"description": "Successful operation"}
+        }
+      }
+    },
+    "/api/personas": {
+        "get": {
+          "description": "Returns message showing app is up",
+          "produces": ["application/json"],
+          "responses": {"200": {"description": "Successful operation"}
+          }
+        }
+      }
+}
+
+}
+    
