@@ -16,7 +16,7 @@ def connect_db():
         database="alumnos"
     )
 
-@app.route('/api/personas', methods=['GET'])
+@app.route('/personas', methods=['GET'])
 def get_personas():
     db = mysql.connector.connect(host="localhost", user="root", passwd="", database="alumnos")
     cursor1 = db.cursor(dictionary=True)
@@ -26,7 +26,7 @@ def get_personas():
     db.close()
     return jsonify(personas)
 
-@app.route('/api/grupos', methods=['GET'])
+@app.route('/grupos', methods=['GET'])
 def get_grupos():
     db = mysql.connector.connect(host="localhost", user="root", passwd="", database="alumnos")
     cursor1 = db.cursor(dictionary=True)
