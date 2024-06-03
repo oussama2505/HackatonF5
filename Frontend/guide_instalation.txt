@@ -8,4 +8,9 @@
 # instalar tailwind
     npm install tailwindcss
 
+# instalar axios
+    npm install axios
+
+
+
     
