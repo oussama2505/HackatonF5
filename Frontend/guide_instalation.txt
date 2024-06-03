@@ -2,8 +2,10 @@
     node --version
 # instalar Vue/Cli :
     npm install -g @vue/cli
-# create nuevo proyecto
-    vue create hackathon-admin
-# Pasos a seguir :
-    Vue3
+# instalar dependencias
+    npm install
+
+# instalar tailwind
+    npm install tailwindcss
+
     

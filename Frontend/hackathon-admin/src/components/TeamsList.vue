@@ -10,19 +10,22 @@
             <div class="flex items-center">
               <div class="flex-1 min-w-0">
                 <p class="text-sm font-medium text-gray-900 truncate dark:text-white">
-                  {{ participant.name }}
+                  {{ participant['Nombre:']}}
                 </p>
                 <p class="text-sm text-gray-500 truncate dark:text-gray-400">
-                  {{ participant.email }}
+                  {{ participant.Apellido }}
                 </p>
                 <p class="text-sm text-gray-500 truncate dark:text-gray-400">
-                  Frontend Level: {{ participant['level of Front End'] }}
+                  Frontend Level: {{ participant['Stack Nivel de Frontend'] }}
                 </p>
                 <p class="text-sm text-gray-500 truncate dark:text-gray-400">
-                  Backend Level: {{ participant['level of Backend'] }}
+                  Backend Level: {{ participant['Stack Nivel de Backend'] }}
                 </p>
                 <p class="text-sm text-gray-500 truncate dark:text-gray-400">
-                  Bootcamp: {{ participant['Bootcamp name'] }}
+                  Correo: {{ participant['Correo electrónico'] }}
+                </p>
+                <p class="text-sm text-gray-500 truncate dark:text-gray-400">
+                  Bootcamp: {{ participant['¿A qué Bootcamp perteneces?'] }}
                 </p>
               </div>
             </div>
