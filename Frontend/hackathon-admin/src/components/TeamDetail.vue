@@ -32,11 +32,12 @@
   </script>
   
   <style scoped>
+
   .container {
     display: flex;
     justify-content: space-around;
     margin: 0 auto;
-    padding-top: 2rem;
+    padding-top: 8rem;
   }
   .card-grid {
     width: 30%;

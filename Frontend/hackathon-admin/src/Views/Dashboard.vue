@@ -5,6 +5,7 @@
     <div class="flex-grow">
       <h1>Dashboard del Administrador</h1>
       <UploadForm @fileParsed="handleFileParsed"/>
+      <label class="charge" for="">Upload your CSV file here</label>
       <TeamsList :participants="participants"/>
     </div>
     <Footer />
@@ -40,3 +41,15 @@ export default defineComponent({
   },
 });
 </script>
+
+<style scoped>
+
+.charge{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding-top: 2rem;
+
+}
+</style>
