@@ -8,6 +8,18 @@ import io
 app = Flask(__name__)
 CORS(app)
 
+SWAGGER_URL="/swagger"
+API_URL="/static/swagger.json"
+
+swagger_ui_blueprint = get_swaggerui_blueprint(
+    SWAGGER_URL,
+    API_URL,
+    config={
+        'app_name': 'Access API'
+    }
+)
+app.register_blueprint(swagger_ui_blueprint, url_prefix=SWAGGER_URL)
+
 def connect_db():
     return mysql.connector.connect(
         host="localhost",
@@ -47,7 +59,18 @@ def upload_file():
     else:
         return jsonify({'error': 'Formato de archivo no permitido. Por favor, suba un archivo CSV.'}), 400
 
+@app.route('/api/grupos', methods=['GET'])
+def get_grupos():
+    db = mysql.connector.connect(host="localhost", user="root", passwd="", database="alumnos")
+    cursor1 = db.cursor(dictionary=True)
+    cursor1.execute("SELECT * FROM alumno_tabla")
+    personas = cursor1.fetchall()
 
+    grupos = [personas[i:i+7] for i in range(0, len(personas), 7)]
+
+    cursor1.close()
+    db.close()
+    return jsonify(grupos)
 
 @app.route('/api/clear', methods=['DELETE'])
 def clear_table():
