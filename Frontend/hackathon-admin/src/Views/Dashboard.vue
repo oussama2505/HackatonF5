@@ -1,14 +1,15 @@
 <!-- Dashboard.vue -->
 <template>
-  <Header />
-  <div>
-    <h1>Dashboard del Administrador</h1>
-    <GroupsButton />  <!-- Aquí agregamos el botón para mostrar los grupos -->
-    <ClearTableButton />
-    <UploadForm @fileParsed="handleFileParsed"/>
-    <TeamsList :participants="participants"/>
+  <div class="flex flex-col min-h-screen">
+    <Header />
+    <div class="flex-grow">
+      <h1>Dashboard del Administrador</h1>
+      <UploadForm @fileParsed="handleFileParsed"/>
+      <label class="charge" for="">Upload your CSV file here</label>
+      <TeamsList :participants="participants"/>
+    </div>
+    <Footer />
   </div>
-  <Footer />
 </template>
 
 <script>
@@ -41,3 +42,15 @@ export default defineComponent({
   },
 });
 </script>
+
+<style scoped>
+
+.charge{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding-top: 2rem;
+
+}
+</style>
