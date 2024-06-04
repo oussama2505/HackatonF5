@@ -1,4 +1,3 @@
-<!-- UploadForm.vue -->
 <template>
   <div class="flex items-center justify-center w-full">
     <label for="dropzone-file" class="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
@@ -15,21 +14,26 @@
 </template>
 
 <script>
-import { defineComponent } from 'vue';
-import Papa from 'papaparse';
-
-export default defineComponent({
+export default {
   name: 'UploadForm',
   emits: ['fileParsed'],
   setup(_, { emit }) {
     const handleFileUpload = (event) => {
       const file = event.target.files[0];
       if (file) {
-        Papa.parse(file, {
-          header: true,
-          complete: (results) => {
-            emit('fileParsed', results.data);
-          },
+        const formData = new FormData();
+        formData.append('file', file);
+
+        fetch('http://localhost:4000/upload', {
+          method: 'POST',
+          body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+          emit('fileParsed', data);
+        })
+        .catch(error => {
+          console.error('Error uploading file:', error);
         });
       }
     };
@@ -38,5 +42,9 @@ export default defineComponent({
       handleFileUpload,
     };
   },
-});
+};
 </script>
+
+<style scoped>
+/* Añade estilos según sea necesario */
+</style>
