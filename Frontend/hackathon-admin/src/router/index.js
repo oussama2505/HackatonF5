@@ -20,12 +20,12 @@ const routes = [
     path: '/',
     name: 'Home',
     component: Home
-  },
-  {
+  }
+  /* {
     path: '/upload',
     name: 'UploadCsv',
     component: UploadCsv
-  }
+  } */
 ];
 
 const router = createRouter({

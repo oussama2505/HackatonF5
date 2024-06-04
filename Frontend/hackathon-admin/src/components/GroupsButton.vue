@@ -17,6 +17,8 @@
   
   <script>
   import axios from 'axios';
+  import GroupsButton from '../components/GroupsButton.vue';
+  import ClearTableButton from '../components/ClearTableButton.vue';
   
   export default {
     data() {
