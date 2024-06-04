@@ -1,8 +1,9 @@
 {
     "swagger": "2.0",
     "info": {
-      "title": "Access API",
-      "version": "1.0.0"
+      "title": "Hackaton FactoriaF5",
+      "version": "1.0.1",
+      "date" : "3/6/2024"
     },
 
 "paths": {
@@ -16,6 +17,22 @@
     },
     "/api/personas": {
         "get": {
+          "description": "Returns message showing app is up",
+          "produces": ["application/json"],
+          "responses": {"200": {"description": "Successful operation"}
+          }
+        }
+      },
+    "/api/clear": {
+        "delete": {
+          "description": "Returns message showing app is up",
+          "produces": ["application/json"],
+          "responses": {"200": {"description": "Successful operation"}
+          }
+        }
+      },
+      "/api/upload": {
+        "post": {
           "description": "Returns message showing app is up",
           "produces": ["application/json"],
           "responses": {"200": {"description": "Successful operation"}
