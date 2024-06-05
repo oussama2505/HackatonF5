@@ -1,6 +1,11 @@
 <template>
     <Header />
     <Login />
+<<<<<<< HEAD
+=======
+    <!-- <GroupsButton /> -->  
+    <!-- <ClearTableButton /> -->
+>>>>>>> sebastian
     <Footer />
   </template>
   

@@ -24,6 +24,7 @@ app.register_blueprint(swagger_ui_blueprint, url_prefix=SWAGGER_URL)
 def connect_db():
     return mysql.connector.connect(
         host="localhost",
+        port=3305,
         user="root",
         password="",
         database="alumnos"
