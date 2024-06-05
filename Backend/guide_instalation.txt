@@ -42,6 +42,7 @@
     https://es.wikihow.com/instalar-XAMPP-en-Linux
 
 - En phpMyAdmin crear una base de datos con el nombre "alumnos"
+
 - Crear una nueva tabla llamada alumno_tabla con 6 columnas 
 CREATE TABLE `alumno_tabla` (
   `nombre` text NOT NULL,
@@ -56,6 +57,9 @@ Motor almacenamiento innoDB
 
 
 ## SWAGGER crear documentación
+
+$ pip install flask-swagger
+
 https://diptochakrabarty.medium.com/flask-python-swagger-for-rest-apis-6efdf0100bd7
 
 En caso de crear una solicitud nueva debe agregarse en Backend/static/swagger.json el siguiente json

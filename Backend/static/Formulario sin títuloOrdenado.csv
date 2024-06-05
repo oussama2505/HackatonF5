@@ -1,0 +1,87 @@
+nombre,apellido,front,back,email,bootcamp
+Sergio,Ruiz,2,5,bbb@gmail.com,Bilbao
+chapa,dura,4,5,python@py.com,Bilbao
+carlos,ruiz,1,2,ccc@gmail.com,Bilbao
+marina,agache,3,1,linux@mint.com,Bilbao
+carla,caceras,1,3,fast@api.com,Bilbao
+agustina,saldiv,2,4,VSC@VSC.com,Bilbao
+justo,bilbao,5,3,ddd@gmail.com,Bilbao
+deusto,uribarri,4,1,angular@fr.com,Bilbao
+zorroza,zorrotzaurre,2,2,eee@gmail.com,Bilbao
+masuste,guintegui,1,5,brais@moure.com,Bilbao
+otro,nombre,4,2,ffff@gmail.com,Bilbao
+otro,apellido,5,1,kkk2@mail.com,Galicia
+cargando,datos,3,1,zzz@gmail.com,Galicia
+Sebastian,Rodriguez,3,3,tttt@gmail.com,Galicia
+Elías,Riquelme,3,2,elias.renault4@gmail.com,Galicia
+Tina,Calleja,4,5,agustinacalleja@gmail.com,Galicia
+Carlos,Perez,2,4,carlos@carlos.com,Galicia
+Andres,Ocina,4,5,andres@andres,Galicia
+Cesar,Monutti,2,1,cesar@cesar,Galicia
+Jonathan,Sabroson,4,1,sabroson@sabroson.com,Galicia
+david,altamirano,3,5,david@db.com,Galicia
+Irene,Gallego,1,1,irene@irene,Galicia
+abde,ramane,4,5,a@a,Galicia
+pepe,GarcIa,3,1,aaaa@gmail.com,Galicia
+hernan,Exequiel,4,2,exe@exe,Galicia
+Vue,Framework,5,1,vue@vue,MadridFem
+anna,perez,1,1,bbb@gmail.com,MadridFem
+python,VSC,3,5,python@py.com,MadridFem
+antonio,rodriguez,5,5,ccc@gmail.com,MadridFem
+linux,mint,2,4,linux@mint.com,MadridFem
+Fast,API,3,4,fast@api.com,MadridFem
+Visual,Studio,5,5,VSC@VSC.com,MadridFem
+alvaro,Benitez,3,4,ddd@gmail.com,MadridFem
+Angular,framework,5,2,angular@fr.com,MadridFem
+alba,galeano,2,5,eee@gmail.com,MadridFem
+Brais,Moure,4,5,brais@moure.com,MadridFem
+jesus,sosa,3,3,ffff@gmail.com,MadridFem
+kioto,tomatu,1,1,kkk2@mail.com,MadridFem
+cristina,villalba,3,4,zzz@gmail.com,MadridFem
+jose,franco,5,1,tttt@gmail.com,MadridFem
+antonio,britez,2,1,sss@gmail.com,Málaga
+mario,sosa,4,5,yyy@gmail.com,Málaga
+diego,torres,4,2,hhhh@gmail.com,Málaga
+paula,galeano,2,2,gggggg@gmail.com,Málaga
+javier,ferreira,5,1,mbnv@gmail.com,Málaga
+adrian,Nuñez,2,5,qwer@gmail.com,Málaga
+Izan ,Jimenez,3,2,azxcvb@gmail.com,Málaga
+Sofía,bravo,1,4,poiu@gmail.com,Málaga
+Alejandro,nuñez,3,3,bbbbbh@gmail.com,Málaga
+Olvia,Cabrera,5,1,fertynvc@gmail.com,Málaga
+Leo,lopez,2,1,bgdrtu@gmail.com,Málaga
+Alma ,Gomez,3,5,aqzxcde@gmail.com,Málaga
+Claudia,Baez,2,2,qwsdhts@gmail.com,Málaga
+Lucas,Nuñez,5,2,bypwngtesz@gmail.com,Málaga
+Marco,Rojas,1,1,akeucsizia@gmail.com,Málaga
+Álvaro ,Ayala,2,4,paxcfrdia@gmail.com,Málaga
+daniela,ortiz,2,1,vfjpashfoaefoñie@gmail.com,AsturiasRural
+manuel,Galeano,1,4,nlkkhdfahfap@gmail.com,AsturiasRural
+Emma,Romero,1,3,xcaso@gmail.com,AsturiasRural
+noa,sosa,1,3,pqwiensk,AsturiasRural
+Mateo,Ortiz,1,4,aqocdh@gmail.com,AsturiasRural
+Sara,Lopez,4,3,asqir@gmail.com,AsturiasRural
+diego,saenz,1,4,bgdrtu@gmail.com,AsturiasRural
+larry,guach,2,3,aqzxde@gmail.com,AsturiasRural
+monn,sailor,3,4,qwsdhts@gmail.com,AsturiasRural
+be,dien,4,4,bypwngtesz@gmail.com,AsturiasRural
+even,charl,5,2,akeucsizia@gmail.com,AsturiasRural
+carlitos,carlois,1,1,paxcfrdia@gmail.com,AsturiasRural
+perro,sonor,2,3,vfjpashfoaefoñie@gmail.com,AsturiasRural
+gato,teas,3,4,nlkkhdfahfap@gmail.com,AsturiasRural
+loro,parrot,4,5,xcaso@gmail.com,AsturiasRural
+champion,merced,5,1,pqwiensk,Barcelona Centro
+abel,renault,1,2,aqocdh@gmail.com,Barcelona Centro
+cuadrado,rombo,2,3,asqir@gmail.com,Barcelona Centro
+c,fvhgtrfdfgr,1,1,bgdrtu@gmail.com,Barcelona Centro
+a,ewertygh,2,4,aqzxde@gmail.com,Barcelona Centro
+s,xsasx,2,1,qwsdhts@gmail.com,Barcelona Centro
+d,hngbhgf,1,4,bypwngtesz@gmail.com,Barcelona Centro
+Fast,uytut,1,3,akeucsizia@gmail.com,Barcelona Centro
+gato,erewrw,1,3,paxcfrdia@gmail.com,Barcelona Centro
+hj,vfsvfsvdsd,1,4,vfjpashfoaefoñie@gmail.com,Barcelona Centro
+gt,vfsvfv,4,3,nlkkhdfahfap@gmail.com,Barcelona Centro
+ree,vdsvfd,1,4,xcaso@gmail.com,Barcelona Centro
+hjyhbr,frfrevc,5,5,pqwiensk,Barcelona Centro
+ree,vdsvfd,1,4,xcaso@gmail.com,Barcelona Centro
+hjyhbr,frfrevc,5,5,pqwiensk,Barcelona Centro

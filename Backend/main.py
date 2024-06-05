@@ -3,7 +3,8 @@ import mysql.connector
 from flask_cors import CORS
 from flask_swagger_ui import get_swaggerui_blueprint
 import csv
-import io
+import io, random
+
 
 app = Flask(__name__)
 CORS(app)
@@ -80,7 +81,7 @@ def clear_table():
         db.close()
 
 
-@app.route('/api/personas', methods=['GET'])
+""" @app.route('/api/personas', methods=['GET'])
 def get_personas():
     db = mysql.connector.connect(host="localhost", user="root", passwd="", database="alumnos")
     cursor1 = db.cursor(dictionary=True)
@@ -101,6 +102,41 @@ def get_grupos():
 
     cursor1.close()
     db.close()
+    return jsonify(grupos) """
+
+@app.route('/api/grupos', methods=['GET'])
+def getgrupos():
+    db = mysql.connector.connect(host="localhost", user="root", passwd="", database="alumnos")
+    cursor1 = db.cursor(dictionary=True)
+    cursor1.execute("SELECT * FROM alumno_tabla")
+    personas = cursor1.fetchall()
+
+    random.shuffle(personas)  # Mezcla aleatoriamente las personas
+
+    total_personas = len(personas)
+    min_grupo = 7
+    max_grupo = 9
+
+##Calcula el número de grupos necesarios
+    num_grupos = (total_personas + min_grupo - 1) // min_grupo
+
+    # Inicializa la lista de grupos vacía
+    grupos = [[] for _ in range(num_grupos)]
+
+##Asigna personas a los grupos intentando equilibrar la cantidad de personas por grupo
+    for i in range(total_personas):
+        grupos[i % num_grupos].append(personas[i])
+
+##Asegúrate de que ningún grupo exceda el tamaño máximo permitido
+    for i in range(num_grupos):
+        while len(grupos[i]) > max_grupo:
+            for j in range(num_grupos):
+                if len(grupos[j]) < max_grupo and len(grupos[i]) > max_grupo:
+                    grupos[j].append(grupos[i].pop())
+
+    cursor1.close()
+    db.close()
+
     return jsonify(grupos)
 
 if __name__ == "__main__":
