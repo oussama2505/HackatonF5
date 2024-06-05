@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router';
 import Home from '../Views/Home.vue';
 import Dashboard from '../Views/Dashboard.vue';
 import Groups from '../Views/Groups.vue';
+import UploadCsv from '../components/UploadCsv.vue'; // Import the new component
 
 const routes = [
   {
@@ -19,7 +20,12 @@ const routes = [
     path: '/',
     name: 'Home',
     component: Home
-  },
+  }
+  /* {
+    path: '/upload',
+    name: 'UploadCsv',
+    component: UploadCsv
+  } */
 ];
 
 const router = createRouter({

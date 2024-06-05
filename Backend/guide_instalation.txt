@@ -53,3 +53,17 @@ CREATE TABLE `alumno_tabla` (
 ) ENGINE=CSV DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
 Motor almacenamiento innoDB
+
+
+## SWAGGER crear documentación
+https://diptochakrabarty.medium.com/flask-python-swagger-for-rest-apis-6efdf0100bd7
+
+En caso de crear una solicitud nueva debe agregarse en Backend/static/swagger.json el siguiente json
+    "/api/personas": {  ## <=== en este la ruta
+        "get": { ## <=== en este la accion del CRUD
+          "description": "Returns message showing app is up",
+          "produces": ["application/json"],
+          "responses": {"200": {"description": "Successful operation"}
+          }
+        }
+      }
