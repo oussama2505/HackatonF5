@@ -4,6 +4,7 @@ from flask_cors import CORS
 from flask_swagger_ui import get_swaggerui_blueprint
 import csv
 import io
+import random
 
 app = Flask(__name__)
 CORS(app)
@@ -66,10 +67,33 @@ def get_grupos():
     cursor1.execute("SELECT * FROM alumno_tabla")
     personas = cursor1.fetchall()
 
-    grupos = [personas[i:i+7] for i in range(0, len(personas), 7)]
+    random.shuffle(personas)  # Mezcla aleatoriamente las personas
 
+    total_personas = len(personas)
+    min_grupo = 7
+    max_grupo = 9
+    
+    # Calcula el número de grupos necesarios
+    num_grupos = (total_personas + min_grupo - 1) // min_grupo
+
+    # Inicializa la lista de grupos vacía
+    grupos = [[] for _ in range(num_grupos)]
+    grupos_caracteristicas = [set() for _ in range(num_grupos)]
+    
+    # Asigna personas a los grupos intentando equilibrar la cantidad de personas por grupo
+    for i in range(total_personas):
+        grupos[i % num_grupos].append(personas[i])
+    
+    # Asegúrate de que ningún grupo exceda el tamaño máximo permitido
+    for i in range(num_grupos):
+        while len(grupos[i]) > max_grupo:
+            for j in range(num_grupos):
+                if len(grupos[j]) < max_grupo and len(grupos[i]) > max_grupo:
+                    grupos[j].append(grupos[i].pop())
+    
     cursor1.close()
     db.close()
+    
     return jsonify(grupos)
 
 @app.route('/api/clear', methods=['DELETE'])
