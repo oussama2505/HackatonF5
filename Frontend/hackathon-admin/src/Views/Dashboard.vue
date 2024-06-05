@@ -5,6 +5,7 @@
     <h1>Dashboard del Administrador</h1>
     <GroupsButton />  <!-- Aquí agregamos el botón para mostrar los grupos -->
     <ClearTableButton />
+    <!-- <UsersList /> -->
     <UploadForm @fileParsed="handleFileParsed"/>
     <TeamsList :participants="participants"/>
   </div>
@@ -17,6 +18,7 @@ import Header from '@/components/Header.vue';
 import Footer from '@/components/Footer.vue';
 import UploadForm from '@/components/UploadForm.vue';
 import TeamsList from '@/components/TeamsList.vue';
+/* import UsersList from '@/components/UsersList.vue'; */
 
 
 export default defineComponent({
@@ -25,7 +27,8 @@ export default defineComponent({
     Header,
     Footer,
     UploadForm,
-    TeamsList,
+    TeamsList
+    /* UsersList */
   },
   setup() {
     const participants = ref([]);
