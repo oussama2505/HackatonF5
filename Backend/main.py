@@ -21,8 +21,6 @@ swagger_ui_blueprint = get_swaggerui_blueprint(
 )
 app.register_blueprint(swagger_ui_blueprint, url_prefix=SWAGGER_URL)
 
-
-
 def connect_db():
     return mysql.connector.connect(
         host="localhost",
@@ -52,7 +50,7 @@ def upload_file():
                                    (nombre, apellido, int(front), int(back), email, bootcamp))
 
             db.commit()
-            return jsonify({'message': 'Archivo CSV cargado correctamente'}), 200
+            return jsonify({'message': 'csv file loaded successfully'}), 200
         except Exception as e:
             db.rollback()
             return jsonify({'error': str(e)}), 500
@@ -60,9 +58,54 @@ def upload_file():
             cursor.close()
             db.close()
     else:
-        return jsonify({'error': 'Formato de archivo no permitido. Por favor, suba un archivo CSV.'}), 400
+        return jsonify({'error': 'File formmat not allowed, please upload a .csv file'}), 400
 
+@app.route('/api/grupos', methods=['GET'])
+def get_grupos():
+    db = mysql.connector.connect(host="localhost", user="root", passwd="", database="alumnos")
+    cursor1 = db.cursor(dictionary=True)
+    cursor1.execute("SELECT * FROM alumno_tabla")
+    personas = cursor1.fetchall()
 
+    random.shuffle(personas)  # Mezcla aleatoriamente las personas
+
+    total_personas = len(personas)
+    min_grupo = 8
+    max_grupo = 9
+    
+    # Calcula el número de grupos necesarios
+    num_grupos = (total_personas + min_grupo - 1) // min_grupo
+
+    # Inicializa la lista de grupos vacía
+    grupos = [[] for _ in range(num_grupos)]
+    grupos_caracteristicas = [set() for _ in range(num_grupos)]
+    
+    # Función para verificar si una persona puede ser añadida a un grupo
+    def puede_agregar_a_grupo(grupo, persona):
+        bootcamp = persona['bootcamp']
+        return bootcamp not in grupos_caracteristicas[grupo]
+    
+    # Asigna personas a los grupos
+    for persona in personas:
+        asignado = False
+        for _ in range(num_grupos):
+            grupo = random.randint(0, num_grupos - 1)
+            if len(grupos[grupo]) < max_grupo and puede_agregar_a_grupo(grupo, persona):
+                grupos[grupo].append(persona)
+                grupos_caracteristicas[grupo].add(persona['bootcamp'])
+                asignado = True
+                break
+        
+        # Si no se encuentra un grupo adecuado, agregar al grupo menos lleno
+        if not asignado:
+            grupo_menos_lleno = min(range(len(grupos)), key=lambda x: len(grupos[x]))
+            grupos[grupo_menos_lleno].append(persona)
+            grupos_caracteristicas[grupo_menos_lleno].add(persona['bootcamp'])
+
+    cursor1.close()
+    db.close()
+    
+    return jsonify(grupos)
 
 @app.route('/api/clear', methods=['DELETE'])
 def clear_table():
@@ -81,63 +124,15 @@ def clear_table():
         db.close()
 
 
-""" @app.route('/api/personas', methods=['GET'])
+@app.route('/api/personas', methods=['GET'])
 def get_personas():
-    db = mysql.connector.connect(host="localhost", user="root", passwd="", database="alumnos")
-    cursor1 = db.cursor(dictionary=True)
-    cursor1.execute("SELECT * FROM alumno_tabla")
-    personas = cursor1.fetchall()
-    cursor1.close()
+    db = connect_db()
+    cursor = db.cursor(dictionary=True)
+    cursor.execute("SELECT * FROM alumno_tabla")
+    personas = cursor.fetchall()
+    cursor.close()
     db.close()
     return jsonify(personas)
 
-@app.route('/api/grupos', methods=['GET'])
-def get_grupos():
-    db = mysql.connector.connect(host="localhost", user="root", passwd="", database="alumnos")
-    cursor1 = db.cursor(dictionary=True)
-    cursor1.execute("SELECT * FROM alumno_tabla")
-    personas = cursor1.fetchall()
-
-    grupos = [personas[i:i+7] for i in range(0, len(personas), 7)]
-
-    cursor1.close()
-    db.close()
-    return jsonify(grupos) """
-
-@app.route('/api/grupos', methods=['GET'])
-def getgrupos():
-    db = mysql.connector.connect(host="localhost", user="root", passwd="", database="alumnos")
-    cursor1 = db.cursor(dictionary=True)
-    cursor1.execute("SELECT * FROM alumno_tabla")
-    personas = cursor1.fetchall()
-
-    random.shuffle(personas)  # Mezcla aleatoriamente las personas
-
-    total_personas = len(personas)
-    min_grupo = 7
-    max_grupo = 9
-
-##Calcula el número de grupos necesarios
-    num_grupos = (total_personas + min_grupo - 1) // min_grupo
-
-    # Inicializa la lista de grupos vacía
-    grupos = [[] for _ in range(num_grupos)]
-
-##Asigna personas a los grupos intentando equilibrar la cantidad de personas por grupo
-    for i in range(total_personas):
-        grupos[i % num_grupos].append(personas[i])
-
-##Asegúrate de que ningún grupo exceda el tamaño máximo permitido
-    for i in range(num_grupos):
-        while len(grupos[i]) > max_grupo:
-            for j in range(num_grupos):
-                if len(grupos[j]) < max_grupo and len(grupos[i]) > max_grupo:
-                    grupos[j].append(grupos[i].pop())
-
-    cursor1.close()
-    db.close()
-
-    return jsonify(grupos)
-
 if __name__ == "__main__":
-    app.run(debug=True, port="4000", host="0.0.0.0")
+    app.run(debug=True, port=4000, host="0.0.0.0")

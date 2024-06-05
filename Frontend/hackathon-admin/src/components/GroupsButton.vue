@@ -1,6 +1,6 @@
 <template>
     <div>
-      <button @click="fetchGroups">Mostrar Grupos</button>
+      <button @click="fetchGroups">Show groups</button>
       <div v-if="groups.length">
         <h3>Grupos</h3>
         <div v-for="(group, index) in groups" :key="index" class="group">
@@ -17,6 +17,7 @@
   
   <script>
   import axios from 'axios';
+  
   
   export default {
     data() {
