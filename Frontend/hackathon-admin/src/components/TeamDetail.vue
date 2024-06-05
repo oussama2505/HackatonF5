@@ -55,6 +55,7 @@ export default {
   padding-top: 2rem;
   height: 100vw;
   width: auto;
+  padding-bottom:4rem ;
 }
 .card-grid {
   width: 48%;
