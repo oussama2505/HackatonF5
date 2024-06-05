@@ -70,7 +70,7 @@ def get_grupos():
     random.shuffle(personas)  # Mezcla aleatoriamente las personas
 
     total_personas = len(personas)
-    min_grupo = 7
+    min_grupo = 8
     max_grupo = 9
     
     # Calcula el número de grupos necesarios
@@ -80,17 +80,28 @@ def get_grupos():
     grupos = [[] for _ in range(num_grupos)]
     grupos_caracteristicas = [set() for _ in range(num_grupos)]
     
-    # Asigna personas a los grupos intentando equilibrar la cantidad de personas por grupo
-    for i in range(total_personas):
-        grupos[i % num_grupos].append(personas[i])
+    # Función para verificar si una persona puede ser añadida a un grupo
+    def puede_agregar_a_grupo(grupo, persona):
+        bootcamp = persona['bootcamp']
+        return bootcamp not in grupos_caracteristicas[grupo]
     
-    # Asegúrate de que ningún grupo exceda el tamaño máximo permitido
-    for i in range(num_grupos):
-        while len(grupos[i]) > max_grupo:
-            for j in range(num_grupos):
-                if len(grupos[j]) < max_grupo and len(grupos[i]) > max_grupo:
-                    grupos[j].append(grupos[i].pop())
-    
+    # Asigna personas a los grupos
+    for persona in personas:
+        asignado = False
+        for _ in range(num_grupos):
+            grupo = random.randint(0, num_grupos - 1)
+            if len(grupos[grupo]) < max_grupo and puede_agregar_a_grupo(grupo, persona):
+                grupos[grupo].append(persona)
+                grupos_caracteristicas[grupo].add(persona['bootcamp'])
+                asignado = True
+                break
+        
+        # Si no se encuentra un grupo adecuado, agregar al grupo menos lleno
+        if not asignado:
+            grupo_menos_lleno = min(range(len(grupos)), key=lambda x: len(grupos[x]))
+            grupos[grupo_menos_lleno].append(persona)
+            grupos_caracteristicas[grupo_menos_lleno].add(persona['bootcamp'])
+
     cursor1.close()
     db.close()
     
