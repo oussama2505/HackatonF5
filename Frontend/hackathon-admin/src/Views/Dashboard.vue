@@ -3,7 +3,6 @@
   <div>
     <UploadCsv />
   </div>
-  <Footer />
 </template>
 
 <script>
