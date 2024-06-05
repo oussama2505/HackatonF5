@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="containerGral">
     <button class="button-view" @click="fetchGroups">Mostrar Grupos</button>
     <div v-if="groups.length">
       <h3>Grupos</h3>
@@ -9,6 +9,7 @@
           <div class="card" v-for="(person, personIndex) in group" :key="personIndex">
             <div class="grid-container">
               <div class="grid-item">{{ person.nombre }}</div>
+              <div class="grid-item">{{ person.apellido }}</div>
               <div class="grid-item">{{ person.email }}</div>
               <div class="grid-item">{{ person.front }}</div>
               <div class="grid-item">{{ person.back }}</div>
@@ -50,13 +51,13 @@ export default {
 .container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
-  margin: 0 auto;
+  justify-content: space-between;
   padding-top: 2rem;
-  width: 100%;
+  height: 100vw;
+  width: auto;
 }
 .card-grid {
-  width: 45%;
+  width: 48%;
   border: 0.1rem solid black;
   border-radius: 1rem;
   opacity: 0.5;
@@ -74,8 +75,9 @@ export default {
 }
 .grid-container {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(6, 1fr);
   gap: 1rem;
+
 }
 .grid-item {
   text-align: center;

@@ -1,19 +1,7 @@
 <template>
-<<<<<<< HEAD
   <Header />
   <div>
     <UploadCsv />
-=======
-  <div class="flex flex-col min-h-screen">
-    <Header />
-    <div class="flex-grow">
-      <h1>Dashboard del Administrador</h1>
-      <UploadForm @fileParsed="handleFileParsed"/>
-      <label class="charge" for="">Upload your CSV file here</label>
-      <TeamsList :participants="participants"/>
-    </div>
-    <Footer />
->>>>>>> sebastian
   </div>
 </template>
 
@@ -43,20 +31,4 @@ export default defineComponent({
     };
   },
 });
-<<<<<<< HEAD
 </script>
-=======
-</script>
-
-<style scoped>
-
-.charge{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  padding-top: 2rem;
-
-}
-</style>
->>>>>>> sebastian
