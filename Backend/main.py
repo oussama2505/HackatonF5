@@ -4,10 +4,20 @@ from flask_cors import CORS
 from flask_swagger_ui import get_swaggerui_blueprint
 import csv
 import io, random
-
+##
+from flask_jwt_extended import JWTManager, create_access_token, jwt_required, get_jwt_identity
+from datetime import timedelta
+##
 
 app = Flask(__name__)
 CORS(app)
+
+
+###
+app.config['JWT_SECRET_KEY'] = 'your_jwt_secret_key'
+jwt = JWTManager(app)
+###
+
 
 SWAGGER_URL="/swagger"
 API_URL="/static/swagger.json"
@@ -28,6 +38,39 @@ def connect_db():
         password="",
         database="alumnos"
     )
+
+####
+
+@app.route('/api/login', methods=['POST'])
+def login():
+    data = request.get_json()
+    email = data.get('email')
+    password = data.get('password')
+
+    db = connect_db()
+    cursor = db.cursor(dictionary=True)
+    cursor.execute("SELECT * FROM users WHERE email = %s", (email,))
+    user = cursor.fetchone()
+    cursor.close()
+    db.close()
+
+    if user and user['password'] == password:
+        expires = timedelta(hours=1)
+        access_token = create_access_token(identity=user['id'], expires_delta=expires)
+        return jsonify(access_token=access_token), 200
+    else:
+        return jsonify({"msg": "Bad email or password"}), 401
+
+
+@app.route('/api/protected', methods=['GET'])
+@jwt_required()
+def protected():
+    current_user_id = get_jwt_identity()
+    return jsonify(logged_in_as=current_user_id), 200
+
+#####
+
+
 
 @app.route('/api/upload', methods=['POST'])
 def upload_file():

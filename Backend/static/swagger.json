@@ -2,8 +2,8 @@
     "swagger": "2.0",
     "info": {
       "title": "Hackaton FactoriaF5",
-      "version": "1.0.1",
-      "date" : "3/6/2024"
+      "version": "1.0.2",
+      "date" : "5/6/2024"
     },
 
 "paths": {
@@ -31,15 +31,97 @@
           }
         }
       },
-      "/api/upload": {
+      "/api/login": {
         "post": {
-          "description": "Returns message showing app is up",
-          "produces": ["application/json"],
-          "responses": {"200": {"description": "Successful operation"}
+          "summary": "Endpoint para autenticar a un usuario y obtener un token JWT.",
+          "description": "Este endpoint permite autenticar a un usuario utilizando su correo electrónico y contraseña, y devuelve un token JWT válido por 1 hora.",
+          "consumes": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "credentials",
+              "in": "body",
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string",
+                    "description": "Correo electrónico del usuario."
+                  },
+                  "password": {
+                    "type": "string",
+                    "description": "Contraseña del usuario."
+                  }
+                },
+                "required": [
+                  "email",
+                  "password"
+                ]
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Token JWT generado con éxito.",
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "access_token": {
+                    "type": "string",
+                    "description": "Token JWT de acceso."
+                  }
+                }
+              }
+            },
+            "401": {
+              "description": "Credenciales inválidas."
+            }
+          }
+        }
+      },
+      "api/upload": {
+        "post": {
+          "summary": "Endpoint para cargar un archivo CSV.",
+          "description": "Este endpoint permite cargar un archivo CSV que contiene información de alumnos.",
+          "consumes": [
+            "multipart/form-data"
+          ],
+          "parameters": [
+            {
+              "name": "file",
+              "in": "formData",
+              "type": "file",
+              "required": true,
+              "description": "Archivo CSV que contiene información de los alumnos."
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "El archivo CSV se cargó exitosamente.",
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "message": {
+                    "type": "string",
+                    "description": "Mensaje de éxito."
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "Formato de archivo no permitido."
+            },
+            "500": {
+              "description": "Error al cargar el archivo CSV."
+            }
           }
         }
       }
-}
+        
+      }
+      
+    }
+      
 
-}
     

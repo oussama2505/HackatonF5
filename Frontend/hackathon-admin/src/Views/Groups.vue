@@ -4,7 +4,6 @@
     <main class="flex-grow">
 
       <div class="content-buttons">
-        <!-- <GroupsButton /> -->
         <ClearTableButton />
         <TeamDetail />
       </div>
