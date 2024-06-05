@@ -50,7 +50,7 @@ def upload_file():
                                    (nombre, apellido, int(front), int(back), email, bootcamp))
 
             db.commit()
-            return jsonify({'message': 'Archivo CSV cargado correctamente'}), 200
+            return jsonify({'message': 'csv file loaded successfully'}), 200
         except Exception as e:
             db.rollback()
             return jsonify({'error': str(e)}), 500
@@ -58,7 +58,7 @@ def upload_file():
             cursor.close()
             db.close()
     else:
-        return jsonify({'error': 'Formato de archivo no permitido. Por favor, suba un archivo CSV.'}), 400
+        return jsonify({'error': 'File formmat not allowed, please upload a .csv file'}), 400
 
 @app.route('/api/grupos', methods=['GET'])
 def get_grupos():

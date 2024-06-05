@@ -59,17 +59,27 @@ button {
   padding: 10px 20px;
   cursor: pointer;
   margin: 1rem;
+  border-radius: 5px;
+}
+
+button:hover {
+  background-color: #007bff;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  margin: 1rem;
+  border-radius: 5px;
 }
 
 .upload-file-box {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	width: 40rem; /* Ajusta el tamaño según tus necesidades */
-	height: auto; /* Ajusta el tamaño según tus necesidades */
+	width: 70%; /* Ajusta el tamaño según tus necesidades */
+	min-height:30rem ; /* Ajusta el tamaño según tus necesidades */
 	border: 2px dashed #ccc;
 	border-radius: 10px;
-	margin: 20px auto;
+	margin: 9% auto;
 	text-align: center;
   }
   
@@ -80,7 +90,7 @@ button {
   }
   
   .upload-icon {
-	font-size: 50rem; /* Tamaño del icono */
+	font-size: 80rem; /* Tamaño del icono */
 	margin-bottom: 20px;
 	color: #888; /* Color del icono */
   }
