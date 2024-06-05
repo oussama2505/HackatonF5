@@ -26,7 +26,8 @@ const routes = [
   {
     path: '/',
     name: 'Home',
-    component: Home
+    component: Home,
+    meta: { requiresAuth: true }
   }
 
 ];
@@ -37,15 +38,15 @@ const router = createRouter({
 });
 
 router.beforeEach((to, from, next) => {
-  // Verificar si la ruta requiere autenticación
+  // con esto veo si la ruta necesita verificar con token 
   if (to.matched.some(record => record.meta.requiresAuth)) {
-    // Verificar si el usuario está autenticado (tiene un token JWT)
+    // verifica si tiene un token activo
     const token = localStorage.getItem('token');
     if (!token) {
-      // Si el usuario no está autenticado, redirigir a la página de inicio de sesión
+      // si no se loguea, fuera, al login
       next({ path: '/login', query: { redirect: to.fullPath } });
     } else {
-      // Si el usuario está autenticado, permitir el acceso a la ruta
+      // si esta logueado, que permita hacer todo.
       next();
     }
   } else {
