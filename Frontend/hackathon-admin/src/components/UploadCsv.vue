@@ -4,7 +4,7 @@
 
       <i class="fa fa-upload upload-icon"></i>
       <input class="upload-button" type="file" @change="handleFileUpload" />
-      <button @click="submitFile"> Cargar </button>
+      <button @click="submitFile"> Upload csv</button>
       <p class="upload-button" v-if="message">{{ message }}</p>
     </div>
   </div>
@@ -24,7 +24,7 @@
       },
       async submitFile() {
         if (!this.file) {
-          this.message = 'Por favor, seleccione un archivo CSV.';
+          this.message = 'please, select a csv file.';
           return;
         }
   
@@ -38,12 +38,12 @@
           });
           const data = await response.json();
           if (response.ok) {
-            this.message = 'Archivo cargado correctamente.';
+            this.message = 'csv loaded successfully.';
           } else {
             this.message = data.error;
           }
         } catch (error) {
-          this.message = 'Error al cargar el archivo.';
+          this.message = 'Error loading csv.';
         }
       }
     }
