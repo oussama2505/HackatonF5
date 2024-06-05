@@ -1,10 +1,6 @@
 <template>
     <div>
-<<<<<<< HEAD
-      <button @click="fetchGroups">Show groups</button>
-=======
       <!-- <button @click="fetchGroups">Mostrar Grupos</button> -->
->>>>>>> sebastian
       <div v-if="groups.length">
         <h3>Grupos</h3>
         <div class="container">
