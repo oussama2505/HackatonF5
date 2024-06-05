@@ -1,6 +1,6 @@
 <template>
   <div>
-    <button @click="fetchGroups">Mostrar Grupos</button>
+    <button class="button-view" @click="fetchGroups">Mostrar Grupos</button>
     <div v-if="groups.length">
       <h3>Grupos</h3>
       <div class="container">
@@ -79,5 +79,21 @@ export default {
 }
 .grid-item {
   text-align: center;
+}
+
+.button-view{
+  background-color: #09ea51; 
+    border: none;
+    color: white;
+    padding: 0.625rem 1.25rem;
+    text-align: center;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1rem;
+    margin: 0.25rem 0.125rem;
+    cursor: pointer;
+    border-radius: 0.25rem;
 }
 </style>

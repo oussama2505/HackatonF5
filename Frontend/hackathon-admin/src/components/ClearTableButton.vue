@@ -1,6 +1,6 @@
 <template>
     <div>
-      <button @click="clearTable">Borrar Todos los Datos</button>
+      <button class="clear-button" @click="clearTable">Borrar Todos los Datos</button>
     </div>
   </template>
   
@@ -25,7 +25,7 @@
   </script>
   
   <style scoped>
-  button {
+  .clear-button {
     background-color: #f44336; 
     border: none;
     color: white;

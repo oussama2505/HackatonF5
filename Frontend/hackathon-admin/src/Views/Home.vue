@@ -1,8 +1,8 @@
 <template>
     <Header />
     <Login />
-    <GroupsButton />  <!-- Este es el boton para mostrar los grupos-->
-    <ClearTableButton /> <!-- Este el boton para borrar la tabla entera de la base de datos. -->
+    <!-- <GroupsButton /> -->  
+    <!-- <ClearTableButton /> -->
     <Footer />
   </template>
   

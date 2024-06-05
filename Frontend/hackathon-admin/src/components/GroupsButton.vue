@@ -1,6 +1,6 @@
 <template>
     <div>
-      <button @click="fetchGroups">Mostrar Grupos</button>
+      <!-- <button @click="fetchGroups">Mostrar Grupos</button> -->
       <div v-if="groups.length">
         <h3>Grupos</h3>
         <div class="container">

@@ -2,9 +2,13 @@
   <div class="flex flex-col min-h-full">
     <Header />
     <main class="flex-grow">
-      <GroupsButton />
-      <ClearTableButton />
-      <TeamDetail />
+
+      <div class="content-buttons">
+        <!-- <GroupsButton /> -->
+        <ClearTableButton />
+        <TeamDetail />
+      </div>
+      
       
     </main>
     <Footer />
@@ -18,3 +22,19 @@ import TeamDetail from '../components/TeamDetail.vue';
 import GroupsButton from '../components/GroupsButton.vue';
 import ClearTableButton from '../components/ClearTableButton.vue';
 </script>
+
+<style scoped>
+
+.content-buttons{
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+  padding-top: 2rem;
+
+}
+</style>
