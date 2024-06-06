@@ -1,0 +1,29 @@
+
+{
+	"header": {
+	  "home": "Inicio",
+	  "dashboard": "Tablero",
+	  "groups": "Grupos",
+	  "language": "Idioma",
+	  "title": "Organización del Hackaton"
+	},
+	"login": {
+		"Sign in to your account": "Inicia sesión en tu cuenta",
+		"Password": "Contraseña",
+		"Forgot password?": "¿Olvidaste tu contraseña?",
+		"Sign in": "Iniciar sesión",
+		"Email address": "Correo electrónico"
+	},
+
+	"footer": {
+		"copyright": "© 2024",
+		"all_rights_reserved": "Todos los derechos reservados",
+		"about_us": "Sobre nosotros",
+		"privacy_policy": "Política de privacidad",
+		"licensing": "Licencias",
+		"contact": "Contacto"
+	  },
+   
+"language": "Español"
+}
+  
