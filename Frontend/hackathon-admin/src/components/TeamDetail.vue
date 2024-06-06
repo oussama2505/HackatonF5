@@ -5,15 +5,15 @@
       <h3>Grupos</h3>
       <div class="container">
         <div v-for="(group, groupIndex) in groups" :key="groupIndex" class="card-grid">
-          <h4>Grupo {{ groupIndex + 1 }}</h4>
+          <h4>GRUPO {{ groupIndex + 1 }}</h4>
           <div class="card" v-for="(person, personIndex) in group" :key="personIndex">
             <div class="grid-container">
-              <div class="grid-item">{{ person.nombre }}</div>
-              <div class="grid-item">{{ person.apellido }}</div>
-              <div class="grid-item">{{ person.email }}</div>
-              <div class="grid-item">{{ person.front }}</div>
-              <div class="grid-item">{{ person.back }}</div>
-              <div class="grid-item">{{ person.bootcamp }}</div>
+              <div class="grid-item"><p><b><em>Nombre:</em></b></p> {{ person.nombre }}</div>
+              <div class="grid-item"><p><b><em>Apellido:</em></b></p> {{ person.apellido }}</div>
+              <div class="grid-item"><p><b><em>email: </em></b></p>{{ person.email }}</div>
+              <div class="grid-item"><p><b><em>Front: </em></b></p>{{ person.front }}</div>
+              <div class="grid-item"><p><b><em>Back:</em></b></p> {{ person.back }}</div>
+              <div class="grid-item"><p><b><em>Bootcamp:</em> </b></p>{{ person.bootcamp }}</div>
             </div>
           </div>
         </div>

@@ -17,7 +17,11 @@
         <router-link to="/" class="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100">Home</router-link>
         <router-link to="/dashboard" class="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100">Dashboard</router-link>
         <router-link to="/groups" class="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100">Groups</router-link>
+        <div>
+      <button @click="logout" class="block w-full justify-center rounded-md bg-red-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600">Logout</button>
       </div>
+      </div>
+      
 
       <!-- Button that displays languages-->
 
@@ -49,8 +53,11 @@
             <li><a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Español</a></li>
           </ul>
         </div>
+       
       </div>
+      
     </div>
+    
   </nav>
 </template>
 
@@ -65,6 +72,10 @@ export default {
     toggleDropdown() {
       this.isDropdownOpen = !this.isDropdownOpen;
     },
+    logout() {
+      localStorage.removeItem('token');
+      this.$router.push('/login');  // Redirigir a la página de inicio de sesión
+    }
   },
 };
 </script>
