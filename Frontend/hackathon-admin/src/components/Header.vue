@@ -7,21 +7,18 @@
       <router-link to="/" class="flex items-center space-x-3 rtl:space-x-reverse">
         <img src="../assets/logo.png" class="h-8" alt="Flowbite Logo" />
         <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
-          Hackaton Organizer
-        </span>
+      {{ $t('header.title') }}
+    </span>
       </router-link>
 
       <!-- This is the link to the views -->
 
       <div class="flex items-center space-x-4 md:order-1">
-        <router-link to="/" class="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100">Home</router-link>
-        <router-link to="/dashboard" class="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100">Dashboard</router-link>
-        <router-link to="/groups" class="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100">Groups</router-link>
-        <div>
-      <button @click="logout" class="block w-full justify-center rounded-md bg-red-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600">Logout</button>
-      </div>
-      </div>
-      
+  <router-link to="/" class="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100">{{ $t('header.home') }}</router-link>
+  <router-link to="/dashboard" class="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100">{{ $t('header.dashboard') }}</router-link>
+  <router-link to="/groups" class="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100">{{ $t('header.groups') }}</router-link>
+</div>
+
 
       <!-- Button that displays languages-->
 
@@ -37,7 +34,7 @@
 -->
 
           </svg>
-          <span>Language</span>
+          <span>{{ $t('language') }}</span>
           <svg aria-hidden="true" class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
           </svg>
@@ -49,15 +46,12 @@
           class="absolute right-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 transition-all duration-300"
         >
           <ul class="py-1">
-            <li><a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">English</a></li>
-            <li><a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Español</a></li>
+            <li><a href="#" @click.stop.prevent="changeLanguage('en')" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">English</a></li>
+            <li><a href="#" @click.stop.prevent="changeLanguage('es')" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Español</a></li>
           </ul>
         </div>
-       
       </div>
-      
     </div>
-    
   </nav>
 </template>
 
@@ -72,10 +66,12 @@ export default {
     toggleDropdown() {
       this.isDropdownOpen = !this.isDropdownOpen;
     },
-    logout() {
-      localStorage.removeItem('token');
-      this.$router.push('/login');  // Redirigir a la página de inicio de sesión
-    }
+    changeLanguage(lang) {
+    this.$i18n.locale = lang;
+    // Guardar el idioma seleccionado en el almacenamiento local (opcional)
+    localStorage.setItem('language', lang);
+
+  }
   },
 };
 </script>

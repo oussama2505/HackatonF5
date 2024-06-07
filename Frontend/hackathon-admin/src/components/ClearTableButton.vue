@@ -1,6 +1,6 @@
 <template>
     <div>
-      <button class="clear-button" @click="clearTable">Borrar Todos los Datos</button>
+      <button class="clear-button" @click="clearTable">Delete all</button>
     </div>
   </template>
   
@@ -13,9 +13,10 @@
         try {
           const response = await axios.delete('http://localhost:4000/api/clear');
           alert(response.data.message);
+          location.reload();
         } catch (error) {
           console.error('Error clearing table:', error);
-          alert('Hubo un error al borrar los datos.');
+          alert('There was an error clearing the table.');
         }
       }
     }
