@@ -19,12 +19,16 @@
 	  "title": "Organizador de Hackatón"
 	},
 	"login": {
-	  "Sign in to your account": "Inicia sesión en tu cuenta",
-	  "Email address": "Correo electrónico",
-	  "Password": "Contraseña",
-	  "Forgot password?": "¿Olvidaste tu contraseña?",
-	  "Sign in": "Iniciar sesión"
-	},
+		"title": "Inicia sesión en tu cuenta",
+		"email": "Correo electrónico",
+		"password": "Contraseña",
+		"emailPlaceholder": "Ingresa tu correo electrónico",
+		"passwordPlaceholder": "Ingresa tu contraseña",
+		"emailRequired": "Por favor ingresa tu correo electrónico.",
+		"passwordRequired": "Por favor ingresa tu contraseña.",
+		"signIn": "Iniciar sesión",
+		"invalidCredentials": "Credenciales inválidas"
+	  },
 	"footer": {
 	  "copyright": "© 2024",
 	  "all_rights_reserved": "Todos los derechos reservados",
@@ -32,6 +36,20 @@
 	  "privacy_policy": "Política de privacidad",
 	  "licensing": "Licencias",
 	  "contact": "Contacto"
-	}
+	},
+	"groups": {
+		"name":"Nombre",
+		"group": "Grupo",
+		"front": "Front",
+		"back": "Back",
+		"email": "Correo electrónico",
+		"bootcamp": "Bootcamp"
+	  },
+	  "upload": {
+		"uploadButton": "Subir CSV",
+		"selectCSVFile": "Por favor, selecciona un archivo CSV.",
+		"successfulUpload": "CSV cargado exitosamente.",
+		"errorUpload": "Error al cargar el CSV."
+	  }
   }
   

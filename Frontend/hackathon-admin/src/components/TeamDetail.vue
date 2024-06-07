@@ -1,19 +1,17 @@
 <template>
   <div class="containerGral">
-    <button class="button-view" @click="fetchGroups">Mostrar Grupos</button>
+    <button class="button-view" @click="fetchGroups">{{ $t('ShowGroups') }}</button>
     <div v-if="groups.length">
-      <h3>Grupos</h3>
       <div class="container">
         <div v-for="(group, groupIndex) in groups" :key="groupIndex" class="card-grid">
-          <h4>GRUPO {{ groupIndex + 1 }}</h4>
+          <h4>{{ $t('Group') }} {{ groupIndex + 1 }}</h4>
           <div class="card" v-for="(person, personIndex) in group" :key="personIndex">
             <div class="grid-container">
-              <div class="grid-item"><p><b><em>Nombre:</em></b></p> {{ person.nombre }}</div>
-              <div class="grid-item"><p><b><em>Apellido:</em></b></p> {{ person.apellido }}</div>
-              <div class="grid-item"><p><b><em>email: </em></b></p>{{ person.email }}</div>
-              <div class="grid-item"><p><b><em>Front: </em></b></p>{{ person.front }}</div>
-              <div class="grid-item"><p><b><em>Back:</em></b></p> {{ person.back }}</div>
-              <div class="grid-item"><p><b><em>Bootcamp:</em> </b></p>{{ person.bootcamp }}</div>
+              <div class="grid-item"><p><b><em>{{ $t('groups.name') }}:</em></b></p> {{ person.nombre }}</div>
+              <div class="grid-item"><p><b><em>{{ $t('groups.email') }}: </em></b></p>{{ person.email }}</div>
+              <div class="grid-item"><p><b><em>{{ $t('groups.front') }}: </em></b></p>{{ person.front }}</div>
+              <div class="grid-item"><p><b><em>{{ $t('groups.back') }}:</em></b></p> {{ person.back }}</div>
+              <div class="grid-item"><p><b><em>{{ $t('groups.bootcamp') }}:</em> </b></p>{{ person.bootcamp }}</div>
             </div>
           </div>
         </div>
@@ -22,25 +20,27 @@
   </div>
 </template>
 
-  
 <script>
+import { ref } from 'vue';
 import axios from 'axios';
 
 export default {
-  data() {
-    return {
-      groups: []
-    };
-  },
-  methods: {
-    async fetchGroups() {
+  setup() {
+    const groups = ref([]);
+
+    const fetchGroups = async () => {
       try {
         const response = await axios.get('http://localhost:4000/api/grupos');
-        this.groups = response.data;
+        groups.value = response.data;
       } catch (error) {
         console.error('Error fetching groups:', error);
       }
-    }
+    };
+
+    return {
+      groups,
+      fetchGroups
+    };
   }
 };
 </script>
