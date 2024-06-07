@@ -106,7 +106,7 @@ def upload_file():
 
 @app.route('/api/grupos', methods=['GET'])
 def get_grupos():
-    db = connect_db
+    db = connect_db()
     cursor1 = db.cursor(dictionary=True)
     cursor1.execute("SELECT * FROM alumno_tabla")
     personas = cursor1.fetchall()
