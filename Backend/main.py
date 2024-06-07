@@ -36,6 +36,7 @@ def connect_db():
         host="localhost",
         port= "3305",
         user="root",
+        port='3305',
         password="",
         database="alumnos"
     )
@@ -106,7 +107,7 @@ def upload_file():
 
 @app.route('/api/grupos', methods=['GET'])
 def get_grupos():
-    db = mysql.connector.connect(host="localhost", port= "3305", user="root", passwd="", database="alumnos")
+    db = connect_db()
     cursor1 = db.cursor(dictionary=True)
     cursor1.execute("SELECT * FROM alumno_tabla")
     personas = cursor1.fetchall()

@@ -4,6 +4,7 @@ import Home from '../Views/Home.vue';
 import Dashboard from '../Views/Dashboard.vue';
 import Groups from '../Views/Groups.vue';
 import Login from '../components/Login.vue'; // Importa el componente Login
+import About from '../Views/About.vue';
 
 const routes = [
   {
@@ -21,6 +22,12 @@ const routes = [
     path: '/groups',
     name: 'Groups',
     component: Groups,
+    meta: { requiresAuth: true }
+  },
+  {
+    path: '/about',
+    name: 'About',
+    component: About,
     meta: { requiresAuth: true }
   },
   {

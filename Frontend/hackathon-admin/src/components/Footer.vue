@@ -19,7 +19,6 @@
     name: 'Footer'
   }
   </script>
-
   <style scoped>
 
 body, html {
