@@ -5,7 +5,7 @@
         {{ $t('footer.copyright') }} <a href="/" class="hover:underline">Hackaton F5</a>. {{ $t('footer.all_rights_reserved') }}.
       </span>
       <ul class="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-500 dark:text-gray-400 md:mt-0">
-        <li><a href="#" class="hover:underline me-4 md:me-6">{{ $t('footer.about_us') }}</a></li>
+        <li><router-link to="/about" class="hover:underline me-4 md:me-6">{{ $t('about') }}</router-link></li>
         <li><a href="#" class="hover:underline me-4 md:me-6">{{ $t('footer.privacy_policy') }}</a></li>
         <li><a href="#" class="hover:underline me-4 md:me-6">{{ $t('footer.licensing') }}</a></li>
         <li><a href="#" class="hover:underline">{{ $t('footer.contact') }}</a></li>

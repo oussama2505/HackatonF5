@@ -1,26 +1,37 @@
-  {
+{
+	"about": {
+	  "title": "About Us",
+	  "description1": "We are students from a bootcamp working on a project to create an app that forms groups from a list of people.",
+	  "description2": "Our company, NextGen Technology, is dedicated to providing innovative solutions that help our clients succeed.",
+	  "description3": "With our app, you can easily create and manage groups to enhance collaboration and productivity.",
+	  "slogan": "Boost your success with our company",
+	  "team": "Meet Our Team",
+	  "member1": "John Doe",
+	  "member2": "Jane Smith",
+	  "member3": "Alice Johnson",
+	  "member4": "Bob Brown"
+	},
 	"header": {
 	  "home": "Home",
 	  "dashboard": "Dashboard",
 	  "groups": "Groups",
 	  "language": "Language",
-	  "title": "Hackaton Organizer"
+	  "title": "Hackathon Organizer"
 	},
 	"login": {
-		"Sign in to your account": "Sign in to your account",
-		"Password": "Password",
-		"Forgot password?": "Forgot password?",
-		"Sign in": "Sign in",
-		"Email address": "Email address"
+	  "Sign in to your account": "Sign in to your account",
+	  "Email address": "Email address",
+	  "Password": "Password",
+	  "Forgot password?": "Forgot password?",
+	  "Sign in": "Sign in"
 	},
 	"footer": {
-		"copyright": "© 2024",
-		"all_rights_reserved": "All Rights Reserved",
-		"about_us": "About us",
-		"privacy_policy": "Privacy Policy",
-		"licensing": "Licensing",
-		"contact": "Contact"
-	  },
-
-  "language": "English"
-}
+	  "copyright": "© 2024",
+	  "all_rights_reserved": "All Rights Reserved",
+	  "aboutUs": "About us",
+	  "privacy_policy": "Privacy Policy",
+	  "licensing": "Licensing",
+	  "contact": "Contact"
+	}
+  }
+  

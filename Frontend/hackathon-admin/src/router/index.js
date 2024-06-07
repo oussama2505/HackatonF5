@@ -3,6 +3,7 @@ import Home from '../Views/Home.vue';
 import Dashboard from '../Views/Dashboard.vue';
 import Groups from '../Views/Groups.vue';
 import UploadCsv from '../components/UploadCsv.vue'; // Import the new component
+import About from '../Views/About.vue';
 
 const routes = [
   {
@@ -14,6 +15,12 @@ const routes = [
     path: '/dashboard',
     name: 'Dashboard',
     component: Dashboard,
+    meta: { requiresAuth: true }
+  },
+  {
+    path: '/about',
+    name: 'About',
+    component: About,
     meta: { requiresAuth: true }
   },
   {
