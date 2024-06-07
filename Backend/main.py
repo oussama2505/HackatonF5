@@ -1,5 +1,5 @@
 from flask import Flask, jsonify, request
-import mysql.connector
+from db.conectDB import connect_db
 from flask_cors import CORS
 from flask_swagger_ui import get_swaggerui_blueprint
 import csv
@@ -8,6 +8,7 @@ import io, random
 from flask_jwt_extended import JWTManager, create_access_token, jwt_required, get_jwt_identity
 from datetime import timedelta
 ##
+
 
 app = Flask(__name__)
 CORS(app)
@@ -31,13 +32,6 @@ swagger_ui_blueprint = get_swaggerui_blueprint(
 )
 app.register_blueprint(swagger_ui_blueprint, url_prefix=SWAGGER_URL)
 
-def connect_db():
-    return mysql.connector.connect(
-        host="localhost",
-        user="root",
-        password="",
-        database="alumnos"
-    )
 
 ####
 
@@ -105,7 +99,7 @@ def upload_file():
 
 @app.route('/api/grupos', methods=['GET'])
 def get_grupos():
-    db = mysql.connector.connect(host="localhost", user="root", passwd="", database="alumnos")
+    db = connect_db()
     cursor1 = db.cursor(dictionary=True)
     cursor1.execute("SELECT * FROM alumno_tabla")
     personas = cursor1.fetchall()
@@ -166,7 +160,6 @@ def clear_table():
         cursor.close()
         db.close()
 
-
 @app.route('/api/personas', methods=['GET'])
 def get_personas():
     db = connect_db()
@@ -176,6 +169,9 @@ def get_personas():
     cursor.close()
     db.close()
     return jsonify(personas)
+
+
+
 
 if __name__ == "__main__":
     app.run(debug=True, port=4000, host="0.0.0.0")
