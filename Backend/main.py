@@ -34,6 +34,7 @@ app.register_blueprint(swagger_ui_blueprint, url_prefix=SWAGGER_URL)
 def connect_db():
     return mysql.connector.connect(
         host="localhost",
+        port= "3305",
         user="root",
         password="",
         database="alumnos"
@@ -105,7 +106,7 @@ def upload_file():
 
 @app.route('/api/grupos', methods=['GET'])
 def get_grupos():
-    db = mysql.connector.connect(host="localhost", user="root", passwd="", database="alumnos")
+    db = mysql.connector.connect(host="localhost", port= "3305", user="root", passwd="", database="alumnos")
     cursor1 = db.cursor(dictionary=True)
     cursor1.execute("SELECT * FROM alumno_tabla")
     personas = cursor1.fetchall()

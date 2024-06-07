@@ -7,18 +7,20 @@
       <router-link to="/" class="flex items-center space-x-3 rtl:space-x-reverse">
         <img src="../assets/logo.png" class="h-8" alt="Flowbite Logo" />
         <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
-      {{ $t('header.title') }}
-    </span>
+          {{ $t('header.title') }}
+        </span>
       </router-link>
 
       <!-- This is the link to the views -->
 
       <div class="flex items-center space-x-4 md:order-1">
-  <router-link to="/" class="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100">{{ $t('header.home') }}</router-link>
-  <router-link to="/dashboard" class="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100">{{ $t('header.dashboard') }}</router-link>
-  <router-link to="/groups" class="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100">{{ $t('header.groups') }}</router-link>
-</div>
-
+        <router-link to="/" class="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 dark:text-white">{{ $t('header.home') }}</router-link>
+        <router-link to="/dashboard" class="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 dark:text-white">{{ $t('header.dashboard') }}</router-link>
+        <router-link to="/groups" class="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 dark:text-white">{{ $t('header.groups') }}</router-link>
+        <div>
+      <button @click="logout" class="block w-full justify-center rounded-md bg-red-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600">Logout</button>
+      </div>
+      </div>
 
       <!-- Button that displays languages-->
 
@@ -29,10 +31,8 @@
           class="inline-flex items-center font-medium justify-center px-4 py-2 text-sm text-gray-900 dark:text-white rounded-lg cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700"
         >
           <svg aria-hidden="true" class="h-3.5 w-3.5 rounded-full me-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-            
-            <!-- Icon on the language button
--->
-
+            <!-- Icon on the language button -->
+            <!-- Add your SVG icon here -->
           </svg>
           <span>{{ $t('language') }}</span>
           <svg aria-hidden="true" class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -67,11 +67,13 @@ export default {
       this.isDropdownOpen = !this.isDropdownOpen;
     },
     changeLanguage(lang) {
-    this.$i18n.locale = lang;
-    // Guardar el idioma seleccionado en el almacenamiento local (opcional)
-    localStorage.setItem('language', lang);
-
-  }
+      this.$i18n.locale = lang;
+      localStorage.setItem('language', lang);
+    },
+    logout() {
+      localStorage.removeItem('token');
+      this.$router.push('/login');  // Redirigir a la página de inicio de sesión
+    }
   },
 };
 </script>
