@@ -13,8 +13,9 @@
 		  <h2 class="text-2xl font-bold text-center mb-6">{{ $t('about.team') }}</h2>
 		  <ul class="flex flex-wrap justify-center space-x-4">
 			<li v-for="member in teamMembers" :key="member.name" class="text-center">
-			  <a :href="member.linkedin" target="_blank" class="text-indigo-600 hover:text-indigo-800">
-				{{ member.name }}
+			  <a :href="member.linkedin" target="_blank">
+				<img :src="member.photo" alt="Profile Photo" class="rounded-full w-32 h-32 mx-auto mb-2">
+				<span class="block text-indigo-600 hover:text-indigo-800">{{ member.name }}</span>
 			  </a>
 			</li>
 		  </ul>
@@ -33,10 +34,26 @@
   
   // Definir los miembros del equipo con sus enlaces de LinkedIn
   const teamMembers = [
-	{ name: t('Elías Riquelme'), linkedin: 'https://www.linkedin.com/in/elias-javier-riquelme-b62655297/' },
-	{ name: t('Oussama Brahmi'), linkedin: 'https://www.linkedin.com/in/oussama-brahmi-b1551a280/' },
-	{ name: t('Sebastián Rodriguez'), linkedin: 'https://www.linkedin.com/in/johan-sebastian-rodriguez-g/' },
-	{ name: t('Tina Calleja'), linkedin: 'https://www.linkedin.com/in/tina-calleja/' }
+	{ 
+	  name: t('Elías Riquelme'), 
+	  linkedin: 'https://www.linkedin.com/in/elias-javier-riquelme-b62655297/', 
+	  photo: require('@/assets/elias.jpeg') 
+	},
+	{ 
+	  name: t('Oussama Brahmi'), 
+	  linkedin: 'https://www.linkedin.com/in/oussama-brahmi-b1551a280/', 
+	  photo: require('@/assets/oussama.jpeg') 
+	},
+	{ 
+	  name: t('Sebastián Rodriguez'), 
+	  linkedin: 'https://www.linkedin.com/in/johan-sebastian-rodriguez-g/', 
+	  photo: require('@/assets/sebastian.jpeg') 
+	},
+	{ 
+	  name: t('Tina Calleja'), 
+	  linkedin: 'https://www.linkedin.com/in/tina-calleja/', 
+	  photo: require('@/assets/tina.jpeg') 
+	},
   ];
   </script>
   
@@ -49,6 +66,16 @@
   .linkedin-links ul {
 	list-style: none;
 	padding: 0;
+  }
+  
+  .linkedin-links div {
+	margin: 0 1rem;
+  }
+  
+  .linkedin-links img {
+	border-radius: 50%;
+	width: 128px; /* 32 * 4 = 128px */
+	height: 128px; /* 32 * 4 = 128px */
   }
   </style>
   
