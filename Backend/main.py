@@ -36,7 +36,6 @@ def connect_db():
         host="localhost",
         port= "3305",
         user="root",
-        port='3305',
         password="",
         database="alumnos"
     )
