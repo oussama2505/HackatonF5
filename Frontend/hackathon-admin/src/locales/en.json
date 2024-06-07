@@ -20,12 +20,16 @@
 	  "title": "Hackathon Organizer"
 	},
 	"login": {
-	  "Sign in to your account": "Sign in to your account",
-	  "Email address": "Email address",
-	  "Password": "Password",
-	  "Forgot password?": "Forgot password?",
-	  "Sign in": "Sign in"
-	},
+        "title": "Sign in to your account",
+        "email": "Email address",
+        "password": "Password",
+        "emailPlaceholder": "Enter your email address",
+        "passwordPlaceholder": "Enter your password",
+        "emailRequired": "Please enter your email address.",
+        "passwordRequired": "Please enter your password.",
+        "signIn": "Sign in",
+        "invalidCredentials": "Invalid credentials"
+      },
 	"footer": {
 	  "copyright": "© 2024",
 	  "all_rights_reserved": "All Rights Reserved",
