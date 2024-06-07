@@ -53,7 +53,7 @@ export default {
   flex-wrap: wrap;
   justify-content: space-between;
   padding-top: 2rem;
-  height: 100vw;
+  height: 100%;
   width: auto;
   padding-bottom:4rem ;
 }
