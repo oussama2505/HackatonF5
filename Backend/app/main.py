@@ -74,7 +74,7 @@ def protected():
 
 
 
-@app.route('/api/upload', methods=['POST'])
+""" @app.route('/api/upload', methods=['POST'])
 def upload_file():
     file = request.files['file']
     if file and file.filename.endswith('.csv'):
@@ -102,7 +102,54 @@ def upload_file():
             cursor.close()
             db.close()
     else:
+        return jsonify({'error': 'File format not allowed, please upload a .csv file'}), 400 """
+
+from collections import defaultdict
+
+@app.route('/api/upload', methods=['POST'])
+def upload_file():
+    file = request.files['file']
+    if file and file.filename.endswith('.csv'):
+        stream = io.StringIO(file.stream.read().decode("UTF8"), newline=None)
+        csv_data = csv.reader(stream, delimiter=',', quotechar='"')
+        
+        next(csv_data, None)
+        
+        db = connect_db()
+        cursor = db.cursor()
+
+        # Conjunto para almacenar correos electrónicos únicos de la base de datos
+        existing_emails = set()
+
+        # Obtener todos los correos electrónicos existentes en la base de datos
+        cursor.execute("SELECT email FROM alumno_tabla")
+        for row in cursor.fetchall():
+            existing_emails.add(row[0])
+
+        try:
+            for row in csv_data:
+                if row:  # Check if row is not empty
+                    nombre, apellido, front, back, email, bootcamp = row
+
+                    # Verificar si el correo electrónico ya existe en la base de datos
+                    if email in existing_emails:
+                        return jsonify({'error': f'Email already exists in database, upload other file.'}), 400
+
+                    cursor.execute("INSERT INTO alumno_tabla (nombre, apellido, front, back, email, bootcamp) VALUES (%s, %s, %s, %s, %s, %s)",
+                                   (nombre, apellido, int(front), int(back), email, bootcamp))
+
+            db.commit()
+            return jsonify({'message': 'CSV file loaded successfully'}), 200
+        except Exception as e:
+            db.rollback()
+            return jsonify({'error': str(e)}), 500
+        finally:
+            cursor.close()
+            db.close()
+    else:
         return jsonify({'error': 'File format not allowed, please upload a .csv file'}), 400
+
+
 
 @app.route('/api/grupos', methods=['GET'])
 def get_grupos():
@@ -115,7 +162,7 @@ def get_grupos():
 
     total_personas = len(personas)
     min_grupo = 8
-    max_grupo = 9
+    max_grupo = 8
     
     # Calcula el número de grupos necesarios
     num_grupos = (total_personas + min_grupo - 1) // min_grupo
