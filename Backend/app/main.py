@@ -1,9 +1,10 @@
 from flask import Flask, jsonify, request
-from db.conectDB import connect_db
+""" import mysql.connector """ #Esto esta comentado ya que las pruebas unitarias no funcionan
 from flask_cors import CORS
 from flask_swagger_ui import get_swaggerui_blueprint
 import csv
 import io, random
+from db.conect_db import connect_db 
 ##
 from flask_jwt_extended import JWTManager, create_access_token, jwt_required, get_jwt_identity
 from datetime import timedelta
@@ -20,9 +21,8 @@ jwt = JWTManager(app)
 ###
 
 
-SWAGGER_URL="/swagger"
-API_URL="/static/swagger.json"
-
+SWAGGER_URL = "/swagger"
+API_URL = "/static/swagger.json"
 swagger_ui_blueprint = get_swaggerui_blueprint(
     SWAGGER_URL,
     API_URL,
@@ -32,7 +32,15 @@ swagger_ui_blueprint = get_swaggerui_blueprint(
 )
 app.register_blueprint(swagger_ui_blueprint, url_prefix=SWAGGER_URL)
 
-
+#Esto esta comentado ya que las pruebas unitarias no funcionan
+""" def connect_db(): 
+    return mysql.connector.connect(
+        host="localhost",
+        user="root",
+        port="3305",
+        password="",
+        database="alumnos"
+    ) """
 ####
 
 @app.route('/api/login', methods=['POST'])
@@ -73,7 +81,6 @@ def upload_file():
         stream = io.StringIO(file.stream.read().decode("UTF8"), newline=None)
         csv_data = csv.reader(stream, delimiter=',', quotechar='"')
         
-        # Skip the header row
         next(csv_data, None)
         
         db = connect_db()
@@ -95,7 +102,7 @@ def upload_file():
             cursor.close()
             db.close()
     else:
-        return jsonify({'error': 'File formmat not allowed, please upload a .csv file'}), 400
+        return jsonify({'error': 'File format not allowed, please upload a .csv file'}), 400
 
 @app.route('/api/grupos', methods=['GET'])
 def get_grupos():
@@ -175,3 +182,4 @@ def get_personas():
 
 if __name__ == "__main__":
     app.run(debug=True, port=4000, host="0.0.0.0")
+

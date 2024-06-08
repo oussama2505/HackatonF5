@@ -1,4 +1,3 @@
-# test_db_connection.py
 import pytest
 import mysql.connector
 from mysql.connector import Error

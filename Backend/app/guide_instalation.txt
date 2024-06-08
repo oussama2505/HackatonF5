@@ -71,3 +71,4 @@ En caso de crear una solicitud nueva debe agregarse en Backend/static/swagger.js
           }
         }
       }
+

@@ -80,7 +80,7 @@
           }
         }
       },
-      "api/upload": {
+      "/api/upload": {
         "post": {
           "summary": "Endpoint para cargar un archivo CSV.",
           "description": "Este endpoint permite cargar un archivo CSV que contiene información de alumnos.",
