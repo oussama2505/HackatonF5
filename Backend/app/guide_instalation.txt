@@ -72,3 +72,5 @@ En caso de crear una solicitud nueva debe agregarse en Backend/static/swagger.js
         }
       }
 
+Para instalar toas las dependencias necesarias para ejecutar este archivo.
+    $ pip install -r requirements.txt
