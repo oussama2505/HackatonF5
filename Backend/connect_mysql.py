@@ -1,4 +1,4 @@
-""" import mysql.connector
+import mysql.connector
 
 
 
@@ -24,4 +24,3 @@ for fila in cursor1:
     print(fila)
 conexion1.close() 
 
- """
