@@ -2,6 +2,11 @@
 
 * Moverse a la carpeta /home/alumno/HackatonF5/HackatonF5/Backend
 
+seguir estos pasos 
+https://ludwingperezt.medium.com/instalar-virtualenv-con-python3-en-ubuntu-20-04-11729720ec53
+
+ - $ python3 -m venv venv
+
 * verificar si esta instalado Virtualenv y la version 
     - $ virtualenv --version
             virtualenv 20.26.1 from /usr/local/lib/python3.10/dist-packages/virtualenv/__init__.py
@@ -11,6 +16,11 @@
 
 * Ahora activamos este entorno virtual
     - $ source venv/bin/activate
+    - pip install Flask
+    - pip install Flask-Cors
+    - pip install flask-swagger-ui
+    - pip install mysql-connector-python
+    - pip install Flask-JWT-Extended
 
 ## Instalar Python Flask
     Chequear que version de python tenemos.
