@@ -1,37 +1,41 @@
 {
 	"about": {
-	  "title": "Sobre Nosotros",
+	  "title": "Sobre Nosotr@s",
 	  "description1": "Somos estudiantes de un bootcamp trabajando en un proyecto para crear una aplicación que forma grupos a partir de una lista de personas.",
 	  "description2": "Nuestra empresa, NextGen Technology, se dedica a proporcionar soluciones innovadoras que ayudan a nuestros clientes a tener éxito.",
 	  "description3": "Con nuestra aplicación, puedes crear y gestionar grupos fácilmente para mejorar la colaboración y la productividad.",
 	  "slogan": "Impulsa tu éxito con nuestra empresa",
 	  "team": "Conoce a nuestro equipo",
-	  "member1": "Juan Pérez",
-	  "member2": "Ana Gómez",
-	  "member3": "Alicia Fernández",
-	  "member4": "Roberto López"
+	  "member1": "Elías Riquelme",
+	  "member2": "Oussama Brahim",
+	  "member3": "Sebastián Rodriguez",
+	  "member4": "Tina Calleja"
 	},
 	"header": {
 	  "home": "Inicio",
 	  "dashboard": "Tablero",
 	  "groups": "Grupos",
 	  "language": "Idioma",
-	  "title": "Organizador de Hackatón"
+	  "logout": "Cerrar sesión",
+	  "title": "NextGen Technology"
 	},
 	"login": {
-	  "Sign in to your account": "Inicia sesión en tu cuenta",
-	  "Email address": "Correo electrónico",
-	  "Password": "Contraseña",
-	  "Forgot password?": "¿Olvidaste tu contraseña?",
-	  "Sign in": "Iniciar sesión"
-	},
+        "title": "Inicia sesión en tu cuenta",
+        "email": "Correo electrónico",
+        "password": "Contraseña",
+        "emailPlaceholder": "Ingresa tu correo electrónico",
+        "passwordPlaceholder": "Ingresa tu contraseña",
+        "emailRequired": "Por favor ingresa tu correo electrónico.",
+        "passwordRequired": "Por favor ingresa tu contraseña.",
+        "signIn": "Iniciar sesión",
+        "invalidCredentials": "Credenciales inválidas"
+      },
 	"footer": {
 	  "copyright": "© 2024",
 	  "all_rights_reserved": "Todos los derechos reservados",
-	  "aboutUs": "Sobre nosotros",
+	  "aboutUs": "Sobre nosotr@s",
 	  "privacy_policy": "Política de privacidad",
 	  "licensing": "Licencias",
 	  "contact": "Contacto"
 	}
-  }
-  
+}
