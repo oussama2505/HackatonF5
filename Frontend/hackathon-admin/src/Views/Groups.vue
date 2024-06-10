@@ -12,6 +12,8 @@
     </main>
     <Footer />
   </div>
+  
+  
 </template>
 
 <script setup>
@@ -25,7 +27,7 @@ import ClearTableButton from '../components/ClearTableButton.vue';
 
 .content-buttons{
   width: 100%;
-  height: auto;
+  height: 90%;
   margin: 0 auto;
   display: flex;
   justify-content: center;
@@ -33,6 +35,5 @@ import ClearTableButton from '../components/ClearTableButton.vue';
   justify-content: space-between;
   flex-direction: column;
   padding-top: 2rem;
-
 }
 </style>
