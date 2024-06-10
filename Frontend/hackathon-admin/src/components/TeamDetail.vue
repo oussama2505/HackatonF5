@@ -1,8 +1,11 @@
 <template>
   <div class="containerGral">
     <button class="button-view" @click="fetchGroups">Mostrar Grupos</button>
-    <div v-if="groups.length">
-      <h3>Grupos</h3>
+    
+    <div v-if="groups.length"><br>
+      <h4>Revise los grupos generados.</h4>
+      <h4>Si esta de acuerdo con estos grupos puede descargarlos en formato CSV para su posterior utilización en el siguiente botón </h4><br>
+      <button class="button-view" @click="downloadCSV">Descargar Grupos en .CSV</button>
       <div class="container">
         <div v-for="(group, groupIndex) in groups" :key="groupIndex" class="card-grid">
           <h4>GRUPO {{ groupIndex + 1 }}</h4>
@@ -40,10 +43,49 @@ export default {
       } catch (error) {
         console.error('Error fetching groups:', error);
       }
+    },
+    async downloadCSV() {
+    try {
+      let csvContent = 'data:text/csv;charset=utf-8,';
+
+      // Recorrer cada grupo
+      this.groups.forEach((group, groupIndex) => {
+        csvContent += `Grupo ${groupIndex + 1}\n`; // Agregar un encabezado de grupo
+        csvContent += 'Nombre,Apellido,Email,Front,Back,Bootcamp\n'; // Agregar encabezados de columnas
+
+        // Recorrer cada persona en el grupo
+        group.forEach(person => {
+          // Agregar información de la persona al contenido CSV
+          csvContent += `${person.nombre},${person.apellido},${person.email},${person.front},${person.back},${person.bootcamp}\n`;
+        });
+
+        // Agregar una fila en blanco como separador entre grupos
+        csvContent += '\n';
+      });
+
+      // Crear un elemento de enlace temporal para descargar el archivo
+      const encodedUri = encodeURI(csvContent);
+      const link = document.createElement('a');
+      link.setAttribute('href', encodedUri);
+      link.setAttribute('download', 'grupos.csv');
+      document.body.appendChild(link);
+
+      // Simular un clic en el enlace para iniciar la descarga
+      link.click();
+
+      // Eliminar el enlace temporal del documento
+      document.body.removeChild(link);
+    } catch (error) {
+      console.error('Error al descargar el archivo CSV:', error);
     }
+  }
+    
   }
 };
 </script>
+
+
+
 
   
 <style scoped>
