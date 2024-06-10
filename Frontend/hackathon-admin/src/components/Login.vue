@@ -34,17 +34,16 @@
 </template>
 
 <script setup>
-import {useRouter} from 'vue-router'
 import { ref } from 'vue';
 import axios from 'axios';
 import { useI18n } from 'vue-i18n';
+import { useRouter } from 'vue-router';
 
-const router = useRouter();
 const { t } = useI18n();
+const router = useRouter();
 
 const email = ref('');
 const password = ref('');
-
 const logo = require('../assets/logo.png');
 
 const login = async () => {
@@ -58,9 +57,21 @@ const login = async () => {
     });
     localStorage.setItem('token', response.data.access_token);
     // Redirigir a una página protegida
-    router.push('/dashboard');
+   router.push('/dashboard');
   } catch (error) {
     alert(t('login.invalidCredentials'));
   }
 };
 </script>
+
+<style scoped>
+
+.mx-auto {
+width: 40%;
+height: 40%;
+}
+
+
+
+
+</style>
