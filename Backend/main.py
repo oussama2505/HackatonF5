@@ -4,21 +4,14 @@ from flask_cors import CORS
 from flask_swagger_ui import get_swaggerui_blueprint
 import csv
 import io, random
-##
 from flask_jwt_extended import JWTManager, create_access_token, jwt_required, get_jwt_identity
 from datetime import timedelta
-##
-
 
 app = Flask(__name__)
 CORS(app)
 
-
-###
 app.config['JWT_SECRET_KEY'] = 'your_jwt_secret_key'
 jwt = JWTManager(app)
-###
-
 
 SWAGGER_URL="/swagger"
 API_URL="/static/swagger.json"
@@ -31,9 +24,6 @@ swagger_ui_blueprint = get_swaggerui_blueprint(
     }
 )
 app.register_blueprint(swagger_ui_blueprint, url_prefix=SWAGGER_URL)
-
-
-####
 
 @app.route('/api/login', methods=['POST'])
 def login():
@@ -55,16 +45,11 @@ def login():
     else:
         return jsonify({"msg": "Bad email or password"}), 401
 
-
 @app.route('/api/protected', methods=['GET'])
 @jwt_required()
 def protected():
     current_user_id = get_jwt_identity()
     return jsonify(logged_in_as=current_user_id), 200
-
-#####
-
-
 
 @app.route('/api/upload', methods=['POST'])
 def upload_file():
@@ -72,22 +57,29 @@ def upload_file():
     if file and file.filename.endswith('.csv'):
         stream = io.StringIO(file.stream.read().decode("UTF8"), newline=None)
         csv_data = csv.reader(stream, delimiter=',', quotechar='"')
-        
+
         # Skip the header row
         next(csv_data, None)
-        
+
         db = connect_db()
         cursor = db.cursor()
 
         try:
-            for row in csv_data:
-                if row:  # Check if row is not empty
-                    nombre, apellido, front, back, email, bootcamp = row
-                    cursor.execute("INSERT INTO alumno_tabla (nombre, apellido, front, back, email, bootcamp) VALUES (%s, %s, %s, %s, %s, %s)",
-                                   (nombre, apellido, int(front), int(back), email, bootcamp))
+            for index, row in enumerate(csv_data, start=1):
+                if len(row) != 6:
+                    return jsonify({'error': f'Error in row {index}: incorrect number of fields'}), 400
+
+                nombre, apellido, front, back, email, bootcamp = row
+
+                # Validación adicional de los campos
+                if not nombre or not apellido or not front.isdigit() or not back.isdigit() or not email or not bootcamp:
+                    return jsonify({'error': f'Error in row {index}: missing or invalid data'}), 400
+
+                cursor.execute("INSERT INTO alumno_tabla (nombre, apellido, front, back, email, bootcamp) VALUES (%s, %s, %s, %s, %s, %s)",
+                               (nombre, apellido, int(front), int(back), email, bootcamp))
 
             db.commit()
-            return jsonify({'message': 'csv file loaded successfully'}), 200
+            return jsonify({'message': 'CSV file loaded successfully'}), 200
         except Exception as e:
             db.rollback()
             return jsonify({'error': str(e)}), 500
@@ -95,7 +87,7 @@ def upload_file():
             cursor.close()
             db.close()
     else:
-        return jsonify({'error': 'File formmat not allowed, please upload a .csv file'}), 400
+        return jsonify({'error': 'File format not allowed, please upload a .csv file'}), 400
 
 @app.route('/api/grupos', methods=['GET'])
 def get_grupos():
@@ -104,25 +96,21 @@ def get_grupos():
     cursor1.execute("SELECT * FROM alumno_tabla")
     personas = cursor1.fetchall()
 
-    random.shuffle(personas)  # Mezcla aleatoriamente las personas
+    random.shuffle(personas)
 
     total_personas = len(personas)
     min_grupo = 8
     max_grupo = 9
     
-    # Calcula el número de grupos necesarios
     num_grupos = (total_personas + min_grupo - 1) // min_grupo
 
-    # Inicializa la lista de grupos vacía
     grupos = [[] for _ in range(num_grupos)]
     grupos_caracteristicas = [set() for _ in range(num_grupos)]
     
-    # Función para verificar si una persona puede ser añadida a un grupo
     def puede_agregar_a_grupo(grupo, persona):
         bootcamp = persona['bootcamp']
         return bootcamp not in grupos_caracteristicas[grupo]
     
-    # Asigna personas a los grupos
     for persona in personas:
         asignado = False
         for _ in range(num_grupos):
@@ -133,7 +121,6 @@ def get_grupos():
                 asignado = True
                 break
         
-        # Si no se encuentra un grupo adecuado, agregar al grupo menos lleno
         if not asignado:
             grupo_menos_lleno = min(range(len(grupos)), key=lambda x: len(grupos[x]))
             grupos[grupo_menos_lleno].append(persona)
@@ -169,9 +156,6 @@ def get_personas():
     cursor.close()
     db.close()
     return jsonify(personas)
-
-
-
 
 if __name__ == "__main__":
     app.run(debug=True, port=4000, host="0.0.0.0")
