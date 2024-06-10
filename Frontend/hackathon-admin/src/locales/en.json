@@ -19,17 +19,6 @@
 	  "language": "Language",
 	  "title": "NextGen Technology"
 	},
-	"login": {
-        "title": "Sign in to your account",
-        "email": "Email address",
-        "password": "Password",
-        "emailPlaceholder": "Enter your email address",
-        "passwordPlaceholder": "Enter your password",
-        "emailRequired": "Please enter your email address.",
-        "passwordRequired": "Please enter your password.",
-        "signIn": "Sign in",
-        "invalidCredentials": "Invalid credentials"
-      },
 	"footer": {
 	  "copyright": "© 2024",
 	  "all_rights_reserved": "All Rights Reserved",
