@@ -20,9 +20,37 @@ Paleta de colores:
 
 Tecnologías:
 
-<img src="{https://img.shields.io/badge/Linux_Mint-87CF3E?style=for-the-badge&logo=linux-mint&logoColor=white}" />
+![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
 
-Funcionalidades del proyecto:
+#Hackaton Organizer
+ 
+ ##Indice
+ 
+ <ul>
+ <li> Introducción</li>
+ <li>Tecnologías</li>
+  <li>Funcionalidad del proyecto</li>
+   <li>Vistas</li>
+   <li>Equipo de desarrollo</li>
+ <ul/>
+
+###Introducción
+
+<p>
+Basado en el requerimiento por parte de la organización "Somos F5", se ha creado Hackaton Organizer, una aplicación de manejo interno cuyo eje fundamental es la estructuración de un selector inteligente para el reparto de grupos en la siguiente cumbre de coders a nivel nacional. Los organizadores del encuentro masivo de desarrolladores han puntualizado falencias representativas en su estructura de distribución de los diferentes grupos, y por ende han confiado en la lógica de programación para generar un sistema que tome parámetros definidos, como por ejemplo: un límite de personas por promoción, y equilibrar los niveles de Frontend junto con Backend para hacer de la competencia una lucha de conocimientos lo más equilibrada posible. Este a su vez deberá hacer cumplir con las expectativas que se han trazado en el mercado del planteamiento y mostrar un producto mucho más sensato y convincente que el de los años inmediatamente anteriores. 
+
+Hackaton Organizer tiene como finalidad tomar una base de datos general, proporcionada por cada uno de los responsables de zona y reagrupada posteriormente, para alojarlos en un sistema que sea capaz de procesarlo, y lanzar peticiones para la confección de la misma. Todo esto al alcance de click, que depura la labor, y hace mucho más confiable el ejercicio en beneficio de todos los implicados.
+</p>
+
+```
+git clone: https://github.com/oussama2505/HackatonF5.git
+```
+
+##Tecnologías
+
+![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)         ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white) ![Jira](https://img.shields.io/badge/Jira-0052CC?style=for-the-badge&logo=Jira&logoColor=white)      ![Linux Mint](https://img.shields.io/badge/Linux_Mint-87CF3E?style=for-the-badge&logo=linux-mint&logoColor=white)          ![JavaScript](https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E)      ![Vue3](https://img.shields.io/badge/Vue%20js-35495E?style=for-the-badge&logo=vuedotjs&logoColor=4FC08D)       ![Python](https://img.shields.io/badge/Python-FFD43B?style=for-the-badge&logo=python&logoColor=blue) ![Flask](https://img.shields.io/badge/Flask-000000?style=for-the-badge&logo=flask&logoColor=white)      ![Vs Code](https://img.shields.io/badge/VSCode-0078D4?style=for-the-badge&logo=visual%20studio%20code&logoColor=white)       ![MySQL](https://img.shields.io/badge/MySQL-005C84?style=for-the-badge&logo=mysql&logoColor=white)    ![Github](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)   ![Figma](https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=figma&logoColor=white)
+
+##Funcionalidades del proyecto:
 
 1. Logueo:
 
