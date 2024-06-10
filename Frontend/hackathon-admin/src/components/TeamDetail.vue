@@ -100,7 +100,7 @@ export default {
   padding-bottom:4rem ;
 }
 .card-grid {
-  width: 48%;
+  width: 47%;
   border: 0.1rem solid black;
   border-radius: 1rem;
   opacity: 0.5;
