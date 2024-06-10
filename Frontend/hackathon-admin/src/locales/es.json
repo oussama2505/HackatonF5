@@ -6,10 +6,10 @@
 	  "description3": "Con nuestra aplicación, puedes crear y gestionar grupos fácilmente para mejorar la colaboración y la productividad.",
 	  "slogan": "Impulsa tu éxito con nuestra empresa",
 	  "team": "Conoce a nuestro equipo",
-	  "member1": "Juan Pérez",
-	  "member2": "Ana Gómez",
-	  "member3": "Alicia Fernández",
-	  "member4": "Roberto López"
+	  "member1": "Elías Riquelme",
+	  "member2": "Oussama Brahim",
+	  "member3": "Sebastián Rodriguez",
+	  "member4": "Tina Calleja"
 	},
 	"header": {
 	  "home": "Inicio",
@@ -17,7 +17,7 @@
 	  "groups": "Grupos",
 	  "language": "Idioma",
 	  "logout": "Cerrar sesión",
-	  "title": "Organizador de Hackatón"
+	  "title": "NextGen Technology"
 	},
 	"login": {
         "title": "Inicia sesión en tu cuenta",

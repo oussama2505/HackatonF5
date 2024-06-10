@@ -6,10 +6,10 @@
 	  "description3": "With our app, you can easily create and manage groups to enhance collaboration and productivity.",
 	  "slogan": "Boost your success with our company",
 	  "team": "Meet Our Team",
-	  "member1": "John Doe",
-	  "member2": "Jane Smith",
-	  "member3": "Alice Johnson",
-	  "member4": "Bob Brown"
+	  "member1": "Elías Riquelme",
+	  "member2": "Oussama Brahmi",
+	  "member3": "Sebastián Rodriguez",
+	  "member4": "Tina Calleja"
 	},
 	"header": {
 	  "home": "Home",
@@ -17,7 +17,7 @@
 	  "groups": "Groups",
 	  "logout": "Logout",
 	  "language": "Language",
-	  "title": "Hackathon Organizer"
+	  "title": "NextGen Technology"
 	},
 	"login": {
         "title": "Sign in to your account",
