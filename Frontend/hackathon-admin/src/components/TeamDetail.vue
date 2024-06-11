@@ -99,13 +99,13 @@ const filteredGroupsByCard = computed(() => {
 });
 
 const columns = [
-  { key: "groupIndex", label: "Group", sortable: true },
-  { key: "nombre", label: "Nombre", sortable: true },
-  { key: "apellido", label: "Apellido", sortable: true },
-  { key: "email", label: "Email", sortable: true },
-  { key: "front", label: "Front", sortable: true },
-  { key: "back", label: "Back", sortable: true },
-  { key: "bootcamp", label: "Bootcamp", sortable: true }
+  { key: "groupIndex", label: "Group", sortable: true},
+  { key: "nombre", label: "Nombre", sortable: true},
+  { key: "apellido", label: "Apellido", sortable: true},
+  { key: "email", label: "Email", sortable: true},
+  { key: "front", label: "Front", sortable: true},
+  { key: "back", label: "Back", sortable: true},
+  { key: "bootcamp", label: "Bootcamp", sortable: true}
 ];
 
 const columnsWithName = [
@@ -158,8 +158,10 @@ const customFilteringFn = (source, cellData) => {
   margin-bottom: 1rem;
 }
 .va-select-wrapper {
-    position: relative; /* Establecer posición relativa */
-    z-index: 1; /* Asegurar que el VaSelect esté en un nivel superior */
-    overflow: visible; /* Permitir que el VaSelect despliegue fuera de su contenedor */
-  }
+  position: relative; /* Establecer posición relativa */
+  z-index: 1; /* Asegurar que el VaSelect esté en un nivel superior */
+  overflow: visible; /* Permitir que el VaSelect despliegue fuera de su contenedor */
+}
+
+
 </style>
