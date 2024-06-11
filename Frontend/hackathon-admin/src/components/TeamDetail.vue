@@ -9,22 +9,10 @@
       <br>
       <button class="button-view" @click="downloadCSV">{{ $t('buttons.downloadGroups') }}</button>
 
-      <!-- <div class="bg-blue grid md:grid-cols-2 gap-6 mb-6">
-        <VaInput v-model="filter" placeholder="Filter..." class="w-full" />
-        <VaSelect
-          v-model="filterByFields"
-          placeholder="Select filter fields"
-          :options="columnsWithName"
-          value-by="value"
-          multiple
-          :style="{ 'z-index': '999'}"
-        />
-      </div> -->
-
       <div v-for="(group, groupIndex) in filteredGroupsByCard" :key="groupIndex">
         <VaCard class="mb-4 border-b-2">
           <h3 class="group-title">Grupo {{ groupIndex + 1 }}</h3>
-          <VaDataTable
+          <VaDataTable class="bg-light-beige texrt-l mb-12"
             v-if="group.length"
             :items="group"
             :columns="translatedColumns"
