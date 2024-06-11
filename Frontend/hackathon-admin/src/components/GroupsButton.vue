@@ -1,60 +1,70 @@
 <template>
-    <div>
-      <!-- <button @click="fetchGroups">Mostrar Grupos</button> -->
-      <div v-if="groups.length">
-        <h3>Grupos</h3>
-        <div class="container">
-        <div class="card-grid" v-for="n in 1" :key="n" >
-        <div class="card" >
-        <div v-for="(group, index) in groups" :key="index">
-          <h4>Grupo {{ index + 1 }}</h4>
-
-          <div v-for="person in group" :key="person.id" class="grid-container">
-            <div class="grid-item">{{ person.nombre }}</div>
-            <div class="grid-item">{{ person.email }}</div>
-            <div class="grid-item">{{ person.front }}</div>
-            <div class="grid-item">{{ person.back }}</div>
-            <div class="grid-item">{{ person.bootcamp }}</div>
+  <div>
+    <div v-if="groups.length">
+      <h3>Grupos</h3>
+      <div class="container">
+        <div class="card-grid" v-for="(group, index) in groups" :key="index">
+          <div class="card">
+            <h4>Grupo {{ index + 1 }}</h4>
+            <div v-for="person in group" :key="person.id" class="grid-container">
+              <div class="grid-item">{{ person.nombre }}</div>
+              <div class="grid-item">{{ person.email }}</div>
+              <div class="grid-item">{{ person.front }}</div>
+              <div class="grid-item">{{ person.back }}</div>
+              <div class="grid-item">{{ person.bootcamp }}</div>
+            </div>
+            <button @click="sendEmails(group, index + 1)">Enviar Correos</button>
           </div>
-          <!-- <ul>
-            <li v-for="person in group" :key="person.id">
-              {{ person.nombre }} {{ person.apellido }} - Front: {{ person.front }}, Back: {{ person.back }}, Email: {{ person.email }}, Bootcamp: {{ person.bootcamp }}
-            </li>
-          </ul> -->
         </div>
       </div>
     </div>
   </div>
-      </div>
-    </div>
-  </template>
-  
-  <script>
-  import axios from 'axios';
-  
-  
-  export default {
-    data() {
-      return {
-        groups: []
-      };
-    },
-    methods: {
-      async fetchGroups() {
-        try {
-          const response = await axios.get('http://localhost:4000/api/grupos');
-          this.groups = response.data;
-        } catch (error) {
-          console.error('Error fetching groups:', error);
-        }
-      }
-    }
-  };
-  </script>
-  
-  
-  <style scoped>
+</template>
 
+<script>
+import axios from 'axios';
+import { ref, onMounted } from 'vue';
+
+export default {
+  setup() {
+    const groups = ref([]);
+
+    const fetchGroups = async () => {
+      try {
+        const response = await axios.get('http://localhost:4000/api/grupos');
+        groups.value = response.data;
+      } catch (error) {
+        console.error('Error fetching groups:', error);
+      }
+    };
+
+    const sendEmails = async (group, groupId) => {
+      try {
+        const response = await axios.post('http://localhost:4000/api/send_emails', {
+          grupos: [group]
+        });
+        if (response.status === 200) {
+          alert(`Correos enviados exitosamente para el grupo ${group}`);
+        } else {
+          alert(`Error al enviar correos para el grupo ${group}`);
+        }
+      } catch (error) {
+        console.error('Error sending emails:', error);
+        alert(`Error al enviar correos para el grupo ${group}`);
+      }
+    };
+
+    onMounted(fetchGroups);
+
+    return {
+      groups,
+      sendEmails
+    };
+  }
+};
+</script>
+
+<style scoped>
 .container {
   display: flex;
   justify-content: space-around;
@@ -84,11 +94,8 @@
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: 1rem;
-
 }
 .grid-item {
   text-align: center;
 }
 </style>
-
-  
