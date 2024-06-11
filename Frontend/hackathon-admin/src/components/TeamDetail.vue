@@ -1,13 +1,13 @@
 <template>
   <div>
-    <button class="button-view" @click="fetchGroups">Mostrar Grupos</button>
+    <button class="button-view" @click="fetchGroups">{{ $t('buttons.showGroups') }}</button>
 
     <div v-if="groups.length">
       <br>
-      <h4>Revise los grupos generados.</h4>
-      <h4>Si está de acuerdo con estos grupos puede descargarlos en formato CSV para su posterior utilización en el siguiente botón</h4>
+      <h4>{{ $t('buttons.revision_P1') }}</h4>
+      <h4>{{ $t('buttons.revision_P2') }}</h4>
       <br>
-      <button class="button-view" @click="downloadCSV">Descargar Grupos en .CSV</button>
+      <button class="button-view" @click="downloadCSV">{{ $t('buttons.downloadGroups') }}</button>
 
       <div class="bg-blue grid md:grid-cols-2 gap-6 mb-6">
         <VaInput v-model="filter" placeholder="Filter..." class="w-full" />
@@ -27,7 +27,7 @@
           <VaDataTable
             v-if="group.length"
             :items="group"
-            :columns="columns"
+            :columns="translatedColumns"
             :filter="filter"
             :filter-method="customFilteringFn"
             @filtered="filteredCount = $event.items.length"
@@ -47,6 +47,9 @@
 import { ref, computed } from 'vue';
 import axios from 'axios';
 import { VaInput, VaSelect, VaDataTable, VaAlert, VaChip, VaCard } from 'vuestic-ui';
+import { useI18n } from 'vue-i18n';
+
+const { t } = useI18n();
 
 const groups = ref([]);
 const filter = ref("");
@@ -99,23 +102,30 @@ const filteredGroupsByCard = computed(() => {
 });
 
 const columns = [
-  { key: "groupIndex", label: "Group", sortable: true },
-  { key: "nombre", label: "Nombre", sortable: true },
-  { key: "apellido", label: "Apellido", sortable: true },
-  { key: "email", label: "Email", sortable: true },
-  { key: "front", label: "Front", sortable: true },
-  { key: "back", label: "Back", sortable: true },
-  { key: "bootcamp", label: "Bootcamp", sortable: true }
+  { key: "groupIndex", label: "table.group" },
+  { key: "nombre", label: "table.name" },
+  { key: "apellido", label: "table.surname" },
+  { key: "email", label: "table.email" },
+  { key: "front", label: "table.front" },
+  { key: "back", label: "table.back" },
+  { key: "bootcamp", label: "table.bootcamp" }
 ];
 
+const translatedColumns = computed(() => {
+  return columns.map(column => ({
+    ...column,
+    label: t(column.label)
+  }));
+});
+
 const columnsWithName = [
-  { value: "groupIndex", text: "Group" },
-  { value: "nombre", text: "Nombre" },
-  { value: "apellido", text: "Apellido" },
-  { value: "email", text: "Email" },
-  { value: "front", text: "Front" },
-  { value: "back", text: "Back" },
-  { value: "bootcamp", text: "Bootcamp" }
+  { value: "groupIndex", text: t("table.group") },
+  { value: "nombre", text: t("table.nombre") },
+  { value: "apellido", text: t("table.apellido") },
+  { value: "email", text: t("table.email") },
+  { value: "front", text: t("table.front") },
+  { value: "back", text: t("table.back") },
+  { value: "bootcamp", text: t("table.bootcamp") }
 ];
 
 const customFilteringFn = (source, cellData) => {
@@ -158,8 +168,8 @@ const customFilteringFn = (source, cellData) => {
   margin-bottom: 1rem;
 }
 .va-select-wrapper {
-    position: relative; /* Establecer posición relativa */
-    z-index: 1; /* Asegurar que el VaSelect esté en un nivel superior */
-    overflow: visible; /* Permitir que el VaSelect despliegue fuera de su contenedor */
-  }
+  position: relative; /* Establecer posición relativa */
+  z-index: 1; /* Asegurar que el VaSelect esté en un nivel superior */
+  overflow: visible; /* Permitir que el VaSelect despliegue fuera de su contenedor */
+}
 </style>

@@ -51,6 +51,22 @@
 		"selectCSVFile": "Por favor, selecciona un archivo CSV.",
 		"successfulUpload": "CSV cargado exitosamente.",
 		"errorUpload": "Error al cargar el CSV."
+	  } ,
+	  "buttons":{
+		"deleteAll":"Borrar Todos",
+		"showGroups":"Mostrar Grupos",
+		"downloadGroups":"Descargar CSV",
+		"revision_P1":"Revise los grupos generados.",
+		"revision_P2":"Si está de acuerdo con estos grupos puede descargarlos en formato CSV para su posterior utilización en el siguiente botón"
+	  },
+	  "table": {
+		"group": "Grupo",
+		"name": "Nombre",
+		"surname": "Apellido",
+		"email": "Correo",
+		"front": "Front",
+		"back": "Back",
+		"bootcamp": "Bootcamp"
 	  }
   }
   
