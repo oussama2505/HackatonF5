@@ -106,7 +106,7 @@ const clickAwayHandler = (event) => {
 
 
 <style scoped>
-/* Estilo para mejorar la animación */
+
 .dropdown-enter-active, .dropdown-leave-active {
   transition: opacity 0.3s, transform 0.3s;
 }

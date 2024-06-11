@@ -24,7 +24,7 @@
       <div v-for="(group, groupIndex) in filteredGroupsByCard" :key="groupIndex">
         <VaCard class="mb-4 border-b-2">
           <h3 class="group-title">Grupo {{ groupIndex + 1 }}</h3>
-          <VaDataTable
+          <VaDataTable class="bg-beige text-l mb-14"
             v-if="group.length"
             :items="group"
             :columns="translatedColumns"
@@ -35,10 +35,10 @@
         </VaCard>
       </div>
 
-      <VaAlert v-if="filteredCount !== null" class="!mt-6" color="info" outline>
+      <!-- <VaAlert v-if="filteredCount !== null" class="!mt-6" color="info" outline>
         Number of filtered items:
         <VaChip>{{ filteredCount }}</VaChip>
-      </VaAlert>
+      </VaAlert> -->
     </div>
   </div>
 </template>
@@ -173,4 +173,5 @@ const customFilteringFn = (source, cellData) => {
   z-index: 1; 
   overflow: visible; 
 }
+
 </style>
