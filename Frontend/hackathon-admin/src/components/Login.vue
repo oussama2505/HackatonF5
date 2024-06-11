@@ -10,8 +10,8 @@
         <div>
           <label for="email" class="block text-sm font-medium leading-6 text-gray-900">{{ t('login.email') }}</label>
           <div class="mt-2">
-            <input v-model="email" id="email" name="email" type="email" autocomplete="email" required :placeholder="t('login.emailPlaceholder')" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-            <p v-if="!email" class="text-sm text-red-500">{{ t('login.emailRequired') }}</p>
+            <input  v-model="email" id="email" name="email" type="email" autocomplete="email" required :placeholder="t('login.emailPlaceholder')" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+            <!-- <p v-if="!email" class="text-sm text-red-500">{{ t('login.emailRequired') }}</p> -->
           </div>
         </div>
 
@@ -21,7 +21,7 @@
           </div>
           <div class="mt-2">
             <input v-model="password" id="password" name="password" type="password" autocomplete="current-password" required :placeholder="t('login.passwordPlaceholder')" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-            <p v-if="!password" class="text-sm text-red-500">{{ t('login.passwordRequired') }}</p>
+            <!-- <p v-if="!password" class="text-sm text-red-500">{{ t('login.passwordRequired') }}</p> -->
           </div>
         </div>
 

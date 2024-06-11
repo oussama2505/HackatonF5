@@ -50,7 +50,6 @@ def login():
     email = data.get('email')
     password = data.get('password')
 
-    # Supón que tienes una función para conectar a la base de datos
     db = connect_db()
     cursor = db.cursor(dictionary=True)
     cursor.execute("SELECT * FROM users WHERE email = %s", (email,))
@@ -73,7 +72,6 @@ def protected():
 #####
 
 @app.route('/api/upload', methods=['POST'])
-
 def upload_file():
     file = request.files.get('file')
     if file and file.filename.endswith('.csv'):
@@ -129,7 +127,6 @@ def upload_file():
 
 
 @app.route('/api/grupos', methods=['GET'])
-
 def get_grupos():
     db = connect_db()
     cursor1 = db.cursor(dictionary=True)
@@ -177,7 +174,6 @@ def get_grupos():
     return jsonify(grupos)
 
 @app.route('/api/clear', methods=['DELETE'])
-
 def clear_table():
     db = connect_db()
     cursor = db.cursor()
