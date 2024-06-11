@@ -37,5 +37,20 @@
 	  "privacy_policy": "Política de privacidad",
 	  "licensing": "Licencias",
 	  "contact": "Contacto"
-	}
-}
+	},
+	"groups": {
+		"name":"Nombre",
+		"group": "Grupo",
+		"front": "Front",
+		"back": "Back",
+		"email": "Correo electrónico",
+		"bootcamp": "Bootcamp"
+	  },
+	  "upload": {
+		"uploadButton": "Subir CSV",
+		"selectCSVFile": "Por favor, selecciona un archivo CSV.",
+		"successfulUpload": "CSV cargado exitosamente.",
+		"errorUpload": "Error al cargar el CSV."
+	  }
+  }
+  
