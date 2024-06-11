@@ -1,5 +1,5 @@
 from flask import Flask, jsonify, request
-""" import mysql.connector """ #Esto esta comentado ya que las pruebas unitarias no funcionan
+""" import mysql.connector  """ #Esto esta comentado ya que las pruebas unitarias no funcionan
 from flask_cors import CORS
 from flask_swagger_ui import get_swaggerui_blueprint
 import csv
@@ -40,7 +40,7 @@ app.register_blueprint(swagger_ui_blueprint, url_prefix=SWAGGER_URL)
         port="3305",
         password="",
         database="alumnos"
-    ) """
+    )  """
 ####
 
 @app.route('/api/login', methods=['POST'])
@@ -65,7 +65,6 @@ def login():
 
 
 @app.route('/api/protected', methods=['GET'])
-@jwt_required()
 def protected():
     current_user_id = get_jwt_identity()
     return jsonify(logged_in_as=current_user_id), 200
@@ -73,6 +72,7 @@ def protected():
 #####
 
 @app.route('/api/upload', methods=['POST'])
+
 def upload_file():
     file = request.files.get('file')
     if file and file.filename.endswith('.csv'):
@@ -125,7 +125,10 @@ def upload_file():
     else:
         return jsonify({'error': ('File format not allowed, please upload a .csv file')}), 400
 
+
+
 @app.route('/api/grupos', methods=['GET'])
+
 def get_grupos():
     db = connect_db()
     cursor1 = db.cursor(dictionary=True)
@@ -173,6 +176,7 @@ def get_grupos():
     return jsonify(grupos)
 
 @app.route('/api/clear', methods=['DELETE'])
+
 def clear_table():
     db = connect_db()
     cursor = db.cursor()
@@ -189,6 +193,7 @@ def clear_table():
         db.close()
 
 @app.route('/api/personas', methods=['GET'])
+
 def get_personas():
     db = connect_db()
     cursor = db.cursor(dictionary=True)
