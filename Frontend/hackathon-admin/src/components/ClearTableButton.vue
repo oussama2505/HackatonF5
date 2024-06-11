@@ -1,6 +1,6 @@
 <template>
     <div>
-      <button class="clear-button" @click="clearTable">Delete all</button>
+      <button class="clear-button" @click="clearTable">{{$t('buttons.deleteAll')}}</button>
     </div>
   </template>
   
