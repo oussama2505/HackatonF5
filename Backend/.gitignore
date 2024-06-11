@@ -1,0 +1,11 @@
+
+*.log
+*.tmp
+node_modules/
+dist/
+config.json
+.env
+.DS_Store
+build/
+*.pyc
+__pycache__/
