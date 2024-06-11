@@ -9,7 +9,7 @@
       <br>
       <button class="button-view" @click="downloadCSV">{{ $t('buttons.downloadGroups') }}</button>
 
-      <div class="bg-blue grid md:grid-cols-2 gap-6 mb-6">
+      <!-- <div class="bg-blue grid md:grid-cols-2 gap-6 mb-6">
         <VaInput v-model="filter" placeholder="Filter..." class="w-full" />
         <VaSelect
           v-model="filterByFields"
@@ -17,9 +17,9 @@
           :options="columnsWithName"
           value-by="value"
           multiple
-          :style="{ 'z-index': '999' }"
+          :style="{ 'z-index': '999'}"
         />
-      </div>
+      </div> -->
 
       <div v-for="(group, groupIndex) in filteredGroupsByCard" :key="groupIndex">
         <VaCard class="mb-4 border-b-2">
@@ -159,6 +159,7 @@ const customFilteringFn = (source, cellData) => {
   align-items: center;
   font-size: 1rem;
   margin: 0.25rem 0.125rem;
+  margin-bottom: 2rem;
   cursor: pointer;
   border-radius: 0.25rem;
 }
@@ -168,8 +169,8 @@ const customFilteringFn = (source, cellData) => {
   margin-bottom: 1rem;
 }
 .va-select-wrapper {
-  position: relative; /* Establecer posición relativa */
-  z-index: 1; /* Asegurar que el VaSelect esté en un nivel superior */
-  overflow: visible; /* Permitir que el VaSelect despliegue fuera de su contenedor */
+  position: relative; 
+  z-index: 1; 
+  overflow: visible; 
 }
 </style>

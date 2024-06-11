@@ -1,6 +1,6 @@
 <template>
   <nav class="bg-beige border-gray-200 dark:bg-gray-900">
-    <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+    <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4 gap-6">
 
       <!-- Logo and title -->
       <router-link to="/" class="flex items-center space-x-3 rtl:space-x-reverse">
