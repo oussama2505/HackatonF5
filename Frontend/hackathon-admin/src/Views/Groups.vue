@@ -3,9 +3,9 @@
     <Header />
     <main class="flex-grow">
 
-      <div class="content-buttons">
-        <ClearTableButton />
-        <TeamDetail />
+      <div class="content-buttons flex relative">
+        <ClearTableButton class="absolute top-10 right-40" />
+        <TeamDetail  />
       </div>
       
       
@@ -32,6 +32,7 @@ import ClearTableButton from '../components/ClearTableButton.vue';
   display: flex;
   justify-content: center;
   align-items: center;
+  gap: 1rem;
   justify-content: space-between;
   flex-direction: column;
   padding-top: 2rem;

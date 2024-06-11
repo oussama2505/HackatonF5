@@ -29,7 +29,8 @@
   .clear-button {
     background-color: #f44336; 
     border: none;
-    color: white;
+    font-weight: bold;
+    color: rgb(255, 255, 255);
     padding: 10px 20px;
     text-align: center;
     text-decoration: none;
@@ -37,7 +38,11 @@
     font-size: 16px;
     margin: 4px 2px;
     cursor: pointer;
-    border-radius: 4px;
+    border-radius: 6px;
+  }
+  .clear-button:hover{
+    background-color: #941108; 
+    color: rgb(255, 255, 255);
   }
   </style>
   
