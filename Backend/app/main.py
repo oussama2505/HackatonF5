@@ -1,5 +1,4 @@
 from flask import Flask, jsonify, request
-
 from flask_cors import CORS
 from flask_swagger_ui import get_swaggerui_blueprint
 import csv
@@ -18,6 +17,7 @@ CORS(app)
 
 ###
 app.config['JWT_SECRET_KEY'] = 'your_jwt_secret_key'
+app.config['JWT_ACCESS_TOKEN_EXPIRES'] = timedelta(minutes=1)
 jwt = JWTManager(app)
 ###
 
@@ -50,6 +50,7 @@ def login():
     email = data.get('email')
     password = data.get('password')
 
+    # Supón que tienes una función para conectar a la base de datos
     db = connect_db()
     cursor = db.cursor(dictionary=True)
     cursor.execute("SELECT * FROM users WHERE email = %s", (email,))
@@ -58,12 +59,10 @@ def login():
     db.close()
 
     if user and user['password'] == password:
-        expires = timedelta(hours=1)
-        access_token = create_access_token(identity=user['id'], expires_delta=expires)
+        access_token = create_access_token(identity=user['id'])
         return jsonify(access_token=access_token), 200
     else:
         return jsonify({"msg": "Bad email or password"}), 401
-
 
 @app.route('/api/protected', methods=['GET'])
 @jwt_required()
