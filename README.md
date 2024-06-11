@@ -1,6 +1,6 @@
-Hackaton Organizer
+# Hackaton Organizer
 
-Indice
+### Indice
 
 1. Introducción
 2. Tecnologías
@@ -34,7 +34,7 @@ Tecnologías:
    <li>Equipo de desarrollo</li>
  <ul/>
 
-###Introducción
+### Introducción
 
 <p>
 Basado en el requerimiento por parte de la organización "Somos F5", se ha creado Hackaton Organizer, una aplicación de manejo interno cuyo eje fundamental es la estructuración de un selector inteligente para el reparto de grupos en la siguiente cumbre de coders a nivel nacional. Los organizadores del encuentro masivo de desarrolladores han puntualizado falencias representativas en su estructura de distribución de los diferentes grupos, y por ende han confiado en la lógica de programación para generar un sistema que tome parámetros definidos, como por ejemplo: un límite de personas por promoción, y equilibrar los niveles de Frontend junto con Backend para hacer de la competencia una lucha de conocimientos lo más equilibrada posible. Este a su vez deberá hacer cumplir con las expectativas que se han trazado en el mercado del planteamiento y mostrar un producto mucho más sensato y convincente que el de los años inmediatamente anteriores. 
