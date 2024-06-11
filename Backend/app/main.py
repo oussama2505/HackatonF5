@@ -1,10 +1,11 @@
 from flask import Flask, jsonify, request
-""" import mysql.connector  """ #Esto esta comentado ya que las pruebas unitarias no funcionan
+
 from flask_cors import CORS
 from flask_swagger_ui import get_swaggerui_blueprint
 import csv
 import io, random
-from db.conect_db import connect_db 
+import mysql.connector   #Esto esta comentado ya que las pruebas unitarias no funcionan
+""" from db.conect_db import connect_db """ 
 ##
 from flask_jwt_extended import JWTManager, create_access_token, jwt_required, get_jwt_identity
 from datetime import timedelta
@@ -33,14 +34,14 @@ swagger_ui_blueprint = get_swaggerui_blueprint(
 app.register_blueprint(swagger_ui_blueprint, url_prefix=SWAGGER_URL)
 
 #Esto esta comentado ya que las pruebas unitarias no funcionan
-""" def connect_db(): 
+def connect_db(): 
     return mysql.connector.connect(
         host="localhost",
         user="root",
         port="3305",
         password="",
         database="alumnos"
-    )  """
+    )  
 ####
 
 @app.route('/api/login', methods=['POST'])
@@ -65,6 +66,7 @@ def login():
 
 
 @app.route('/api/protected', methods=['GET'])
+@jwt_required()
 def protected():
     current_user_id = get_jwt_identity()
     return jsonify(logged_in_as=current_user_id), 200
@@ -115,7 +117,7 @@ def upload_file():
                     )
 
             db.commit()
-            return jsonify({'message': ('CSV file loaded successfully')}), 200
+            return jsonify({'message': ('csv file loaded successfully')}), 200
         except Exception as e:
             db.rollback()
             return jsonify({'error': str(e)}), 500
