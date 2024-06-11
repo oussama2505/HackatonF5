@@ -17,7 +17,7 @@ CORS(app)
 
 ###
 app.config['JWT_SECRET_KEY'] = 'your_jwt_secret_key'
-app.config['JWT_ACCESS_TOKEN_EXPIRES'] = timedelta(minutes=1)
+app.config['JWT_ACCESS_TOKEN_EXPIRES'] = timedelta(hours=1)
 jwt = JWTManager(app)
 ###
 
