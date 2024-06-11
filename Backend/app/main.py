@@ -1,10 +1,11 @@
 from flask import Flask, jsonify, request
-""" import mysql.connector  """ #Esto esta comentado ya que las pruebas unitarias no funcionan
+
 from flask_cors import CORS
 from flask_swagger_ui import get_swaggerui_blueprint
 import csv
 import io, random
-from db.conect_db import connect_db 
+import mysql.connector   #Esto esta comentado ya que las pruebas unitarias no funcionan
+""" from db.conect_db import connect_db """ 
 ##
 from flask_jwt_extended import JWTManager, create_access_token, jwt_required, get_jwt_identity
 from datetime import timedelta
@@ -33,14 +34,14 @@ swagger_ui_blueprint = get_swaggerui_blueprint(
 app.register_blueprint(swagger_ui_blueprint, url_prefix=SWAGGER_URL)
 
 #Esto esta comentado ya que las pruebas unitarias no funcionan
-""" def connect_db(): 
+def connect_db(): 
     return mysql.connector.connect(
         host="localhost",
         user="root",
         port="3305",
         password="",
         database="alumnos"
-    )  """
+    )  
 ####
 
 @app.route('/api/login', methods=['POST'])
@@ -72,47 +73,15 @@ def protected():
 
 #####
 
-
-
-""" @app.route('/api/upload', methods=['POST'])
-def upload_file():
-    file = request.files['file']
-    if file and file.filename.endswith('.csv'):
-        stream = io.StringIO(file.stream.read().decode("UTF8"), newline=None)
-        csv_data = csv.reader(stream, delimiter=',', quotechar='"')
-        
-        next(csv_data, None)
-        
-        db = connect_db()
-        cursor = db.cursor()
-
-        try:
-            for row in csv_data:
-                if row:  # Check if row is not empty
-                    nombre, apellido, front, back, email, bootcamp = row
-                    cursor.execute("INSERT INTO alumno_tabla (nombre, apellido, front, back, email, bootcamp) VALUES (%s, %s, %s, %s, %s, %s)",
-                                   (nombre, apellido, int(front), int(back), email, bootcamp))
-
-            db.commit()
-            return jsonify({'message': 'csv file loaded successfully'}), 200
-        except Exception as e:
-            db.rollback()
-            return jsonify({'error': str(e)}), 500
-        finally:
-            cursor.close()
-            db.close()
-    else:
-        return jsonify({'error': 'File format not allowed, please upload a .csv file'}), 400 """
-
-from collections import defaultdict
-
 @app.route('/api/upload', methods=['POST'])
+
 def upload_file():
-    file = request.files['file']
+    file = request.files.get('file')
     if file and file.filename.endswith('.csv'):
         stream = io.StringIO(file.stream.read().decode("UTF8"), newline=None)
         csv_data = csv.reader(stream, delimiter=',', quotechar='"')
         
+        # Omite la primera fila (asumimos que es el encabezado)
         next(csv_data, None)
         
         db = connect_db()
@@ -128,18 +97,27 @@ def upload_file():
 
         try:
             for row in csv_data:
-                if row:  # Check if row is not empty
+                if row:
+                    if len(row) != 6:
+                        return jsonify({'error': ('Error: wrong number of columns')}), 400
+
                     nombre, apellido, front, back, email, bootcamp = row
+
+                    # Validación adicional de los campos
+                    if not nombre or not apellido or not front.isdigit() or not back.isdigit() or not email or not bootcamp:
+                        return jsonify({'error': ('Error: the CSV file contains empty spaces.')}), 400
 
                     # Verificar si el correo electrónico ya existe en la base de datos
                     if email in existing_emails:
-                        return jsonify({'error': f'Email already exists in database, upload other file.'}), 400
+                        return jsonify({'error': ('Email already exists in database, upload another file.')}), 400
 
-                    cursor.execute("INSERT INTO alumno_tabla (nombre, apellido, front, back, email, bootcamp) VALUES (%s, %s, %s, %s, %s, %s)",
-                                   (nombre, apellido, int(front), int(back), email, bootcamp))
+                    cursor.execute(
+                        "INSERT INTO alumno_tabla (nombre, apellido, front, back, email, bootcamp) VALUES (%s, %s, %s, %s, %s, %s)",
+                        (nombre, apellido, int(front), int(back), email, bootcamp)
+                    )
 
             db.commit()
-            return jsonify({'message': 'CSV file loaded successfully'}), 200
+            return jsonify({'message': ('csv file loaded successfully')}), 200
         except Exception as e:
             db.rollback()
             return jsonify({'error': str(e)}), 500
@@ -147,11 +125,12 @@ def upload_file():
             cursor.close()
             db.close()
     else:
-        return jsonify({'error': 'File format not allowed, please upload a .csv file'}), 400
+        return jsonify({'error': ('File format not allowed, please upload a .csv file')}), 400
 
 
 
 @app.route('/api/grupos', methods=['GET'])
+
 def get_grupos():
     db = connect_db()
     cursor1 = db.cursor(dictionary=True)
@@ -199,6 +178,7 @@ def get_grupos():
     return jsonify(grupos)
 
 @app.route('/api/clear', methods=['DELETE'])
+
 def clear_table():
     db = connect_db()
     cursor = db.cursor()
@@ -215,6 +195,7 @@ def clear_table():
         db.close()
 
 @app.route('/api/personas', methods=['GET'])
+
 def get_personas():
     db = connect_db()
     cursor = db.cursor(dictionary=True)

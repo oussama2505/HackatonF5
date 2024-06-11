@@ -1,3 +1,21 @@
 Para ejecutar las pruebas unitarias con el detalle
     - $ pytest -v Backend/tests/test_main.py
+    - $ pytest -v Backend/tests/test_db_connection.py
 
+Lo que hay que hacer es de main volver a comentar
+
+#Esto esta comentado ya que las pruebas unitarias no funcionan
+def connect_db(): 
+    return mysql.connector.connect(
+        host="localhost",
+        user="root",
+        port="3305",
+        password="",
+        database="alumnos"
+    )  
+####
+
+Esto en main.py 
+
+import mysql.connector   #Esto esta comentado ya que las pruebas unitarias no funcionan
+""" from db.conect_db import connect_db """ 
