@@ -1,26 +1,66 @@
 <template>
-  <div class="upload-file-box">
-    <div class="upload-content">
-
-      <i class="fa fa-upload upload-icon"></i>
-      <input class="upload-button" type="file" @change="handleFileUpload" />
-      <button @click="submitFile"> {{ $t('upload.uploadButton') }}</button>
-      <p class="upload-button" v-if="message">{{ message }}</p>
+  <div class="upload-file-container">
+    <div class="upload-file-box" @drop.prevent="handleDrop" @dragover.prevent>
+      <div class="upload-content">
+        <i class="fa fa-upload upload-icon"></i>
+        <input class="upload-button" type="file" @change="handleFileUpload" />
+        <button class="upload-button" @click="submitFile"> {{ $t('upload.uploadButton') }}</button>
+        <p class="upload-message" v-if="message">{{ message }}</p>
+      </div>
     </div>
+    <div class="csv-preview" v-if="csvData.length > 0">
+      <table class="mb-12">
+        <thead>
+          <tr>
+            <th v-for="(header, index) in csvData[0]" :key="index">{{ header }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="(row, rowIndex) in csvData.slice(1)" :key="rowIndex">
+            <td v-for="(cell, cellIndex) in row" :key="cellIndex">{{ cell }}</td>
+          </tr>
+        </tbody>
+      </table>
+      
+    </div>
+    <ArrowUp />
   </div>
 </template>
-
 <script setup>
+import ArrowUp from './ArrowUp.vue';
 import { ref } from 'vue';
 import { useI18n } from 'vue-i18n';
+import Papa from 'papaparse';
 
 const { t } = useI18n();
 
 const file = ref(null);
 const message = ref('');
+const csvData = ref([]);
 
 const handleFileUpload = (event) => {
-  file.value = event.target.files[0];
+  const uploadedFile = event.target.files[0];
+  if (uploadedFile) {
+    file.value = uploadedFile;
+    parseCSV(uploadedFile);
+  }
+};
+
+const handleDrop = (event) => {
+  const droppedFile = event.dataTransfer.files[0];
+  if (droppedFile) {
+    file.value = droppedFile;
+    parseCSV(droppedFile);
+  }
+};
+
+const parseCSV = (file) => {
+  Papa.parse(file, {
+    complete: (results) => {
+      csvData.value = results.data;
+    },
+    header: false,
+  });
 };
 
 const submitFile = async () => {
@@ -48,38 +88,24 @@ const submitFile = async () => {
   }
 };
 </script>
-
 <style scoped>
-/* Aquí puedes agregar tus estilos específicos para este componente */
-/* Por ejemplo: */
-
-button {
-  background-color: lightblue;
-  border: none;
-  padding: 10px 20px;
-  cursor: pointer;
-  margin: 1rem;
-  border-radius: 5px;
-}
-
-button:hover {
-  background-color: #007bff;
-  border: none;
-  padding: 10px 20px;
-  cursor: pointer;
-  margin: 1rem;
-  border-radius: 5px;
+.upload-file-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  margin: 0 auto;
+  width: 80%; /* Ajusta el tamaño según tus necesidades */
 }
 
 .upload-file-box {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 70%; /* Ajusta el tamaño según tus necesidades */
-  min-height:30rem ; /* Ajusta el tamaño según tus necesidades */
+  width: 45%; /* Ajusta el tamaño según tus necesidades */
+  min-height: 30rem;
   border: 2px dashed #ccc;
   border-radius: 10px;
-  margin: 9% auto;
+  margin: 2rem 0;
   text-align: center;
 }
 
@@ -90,7 +116,7 @@ button:hover {
 }
 
 .upload-icon {
-  font-size: 80rem; /* Tamaño del icono */
+  font-size: 4rem; /* Tamaño del icono */
   margin-bottom: 20px;
   color: #888; /* Color del icono */
 }
@@ -107,5 +133,32 @@ button:hover {
 
 .upload-button:hover {
   background-color: lightblue;
+}
+
+.upload-message {
+  font-size: large;
+  color: red;
+  font-weight: bold;
+}
+
+.csv-preview {
+  width: 45%;
+  overflow-x: auto;
+  margin: 2rem 0;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: left;
+}
+
+th {
+  background-color: #f4f4f4;
 }
 </style>
