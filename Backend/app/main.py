@@ -1,5 +1,4 @@
 from flask import Flask, jsonify, request
-from flask_mail import Mail, Message
 from flask_cors import CORS
 from flask_swagger_ui import get_swaggerui_blueprint
 import csv
@@ -16,15 +15,9 @@ app = Flask(__name__)
 CORS(app)
 
 
-app.config['MAIL_SERVER'] = 'smtp.gmail.com'
-app.config['MAIL_PORT'] = 587
-app.config['MAIL_USE_TLS'] = True
-app.config['MAIL_USERNAME'] = ''
-app.config['MAIL_PASSWORD'] = ''
 
-mail = Mail(app)
-###
 app.config['JWT_SECRET_KEY'] = 'your_jwt_secret_key'
+app.config['JWT_ACCESS_TOKEN_EXPIRES'] = timedelta(hours=1)
 jwt = JWTManager(app)
 ###
 
@@ -51,28 +44,6 @@ def connect_db():
     )  
 ####
 
-@app.route('/send-email', methods=['POST'])
-def send_email():
-    data = request.get_json()
-    name = data.get('name')
-    email = data.get('email')
-    subject = data.get('subject')
-    message = data.get('message')
-
-    msg = Message(subject=subject,
-                  sender=app.config['MAIL_USERNAME'],
-                  recipients=[''])
-    msg.body = f"Name: {name}\nEmail: {email}\n\n{message}"
-    
-     # Enviar el correo electrónico
-    try:
-        mail.send(msg)
-    except Exception as e:
-        return jsonify({"message": f"Error sending email: {str(e)}"}), 500
-
-    return jsonify({"message": "Email sent successfully!"}), 200
-
-
 @app.route('/api/login', methods=['POST'])
 def login():
     data = request.get_json()
@@ -87,12 +58,10 @@ def login():
     db.close()
 
     if user and user['password'] == password:
-        expires = timedelta(hours=1)
-        access_token = create_access_token(identity=user['id'], expires_delta=expires)
+        access_token = create_access_token(identity=user['id'])
         return jsonify(access_token=access_token), 200
     else:
         return jsonify({"msg": "Bad email or password"}), 401
-
 
 @app.route('/api/protected', methods=['GET'])
 @jwt_required()
@@ -103,7 +72,6 @@ def protected():
 #####
 
 @app.route('/api/upload', methods=['POST'])
-
 def upload_file():
     file = request.files.get('file')
     if file and file.filename.endswith('.csv'):
@@ -159,7 +127,6 @@ def upload_file():
 
 
 @app.route('/api/grupos', methods=['GET'])
-
 def get_grupos():
     db = connect_db()
     cursor1 = db.cursor(dictionary=True)
@@ -207,7 +174,6 @@ def get_grupos():
     return jsonify(grupos)
 
 @app.route('/api/clear', methods=['DELETE'])
-
 def clear_table():
     db = connect_db()
     cursor = db.cursor()

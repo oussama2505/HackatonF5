@@ -1,6 +1,9 @@
-<template>
+
+
+ <template>
   <div>
     <button class="button-view" @click="fetchGroups">{{ $t('buttons.showGroups') }}</button>
+    <button class="clear-button" @click="showModal = true">{{$t('buttons.deleteAll')}}</button>
 
     <div v-if="groups.length">
       <br>
@@ -9,27 +12,16 @@
       <br>
       <button class="button-view" @click="downloadCSV">{{ $t('buttons.downloadGroups') }}</button>
 
-      <!-- <div class="bg-blue grid md:grid-cols-2 gap-6 mb-6">
-        <VaInput v-model="filter" placeholder="Filter..." class="w-full" />
-        <VaSelect
-          v-model="filterByFields"
-          placeholder="Select filter fields"
-          :options="columnsWithName"
-          value-by="value"
-          multiple
-          :style="{ 'z-index': '999'}"
-        />
-      </div> -->
-
       <div v-for="(group, groupIndex) in filteredGroupsByCard" :key="groupIndex">
         <VaCard class="mb-4 border-b-2">
           <h3 class="group-title">Grupo {{ groupIndex + 1 }}</h3>
-          <VaDataTable
+          <VaDataTable class="bg-light-beige text-l mb-12"
             v-if="group.length"
             :items="group"
             :columns="translatedColumns"
             :filter="filter"
             :filter-method="customFilteringFn"
+            :header-class="'custom-header'"
             @filtered="filteredCount = $event.items.length"
           />
         </VaCard>
@@ -40,6 +32,14 @@
         <VaChip>{{ filteredCount }}</VaChip>
       </VaAlert>
     </div>
+
+    <ConfirmationModal
+      :visible="showModal"
+      :title="$t('modals.confirmDeleteTitle')"
+      :message="$t('modals.confirmDeleteMessage')"
+      @confirm="clearTable"
+      @cancel="showModal = false"
+    />
   </div>
 </template>
 
@@ -48,6 +48,7 @@ import { ref, computed } from 'vue';
 import axios from 'axios';
 import { VaInput, VaSelect, VaDataTable, VaAlert, VaChip, VaCard } from 'vuestic-ui';
 import { useI18n } from 'vue-i18n';
+import ConfirmationModal from './ConfirmationModal.vue';
 
 const { t } = useI18n();
 
@@ -55,6 +56,7 @@ const groups = ref([]);
 const filter = ref("");
 const filterByFields = ref([]);
 const filteredCount = ref(null);
+const showModal = ref(false);
 
 const fetchGroups = async () => {
   try {
@@ -89,6 +91,19 @@ const downloadCSV = async () => {
   }
 };
 
+const clearTable = async () => {
+  try {
+    const response = await axios.delete('http://localhost:4000/api/clear');
+    /* alert(response.data.message); */
+    location.reload();
+  } catch (error) {
+    console.error('Error clearing table:', error);
+    alert('There was an error clearing the table.');
+  } finally {
+    showModal.value = false;
+  }
+};
+
 const flattenedGroups = computed(() => {
   return groups.value.flatMap((group, groupIndex) => {
     return group.map(person => ({ ...person, groupIndex: groupIndex + 1 }));
@@ -120,8 +135,8 @@ const translatedColumns = computed(() => {
 
 const columnsWithName = [
   { value: "groupIndex", text: t("table.group") },
-  { value: "nombre", text: t("table.nombre") },
-  { value: "apellido", text: t("table.apellido") },
+  { value: "nombre", text: t("table.name") },
+  { value: "apellido", text: t("table.surname") },
   { value: "email", text: t("table.email") },
   { value: "front", text: t("table.front") },
   { value: "back", text: t("table.back") },
@@ -139,38 +154,124 @@ const customFilteringFn = (source, cellData) => {
     if (!searchInCurrentRow) return false;
   }
   const filterRegex = new RegExp(filter.value, "i");
-  return filterRegex.test(source);
+  return Object.values(source).some(value => filterRegex.test(value));
 };
 </script>
-
 <style scoped>
 .grid {
   display: grid;
 }
+
 .button-view {
-  background-color: #09ea51; 
+  background-color: #03bd3e;
   border: none;
-  color: white;
+  color: rgb(255, 255, 255);
   padding: 0.625rem 1.25rem;
   text-align: center;
   text-decoration: none;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 1rem;
+  font-size: 1.1rem;
   margin: 0.25rem 0.125rem;
-  margin-bottom: 2rem;
   cursor: pointer;
   border-radius: 0.25rem;
 }
+
+.button-view:hover {
+  background-color: #a3a8a4;
+  color: rgb(17, 17, 17);
+}
+
+.clear-button {
+  background-color: #f44336;
+  border: none;
+  font-weight: bold;
+  color: rgb(255, 255, 255);
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 6px;
+}
+
+.clear-button:hover {
+  background-color: #941108;
+  color: rgb(255, 255, 255);
+}
+
 .group-title {
   font-size: 1.25rem;
   font-weight: bold;
   margin-bottom: 1rem;
 }
+
 .va-select-wrapper {
-  position: relative; 
-  z-index: 1; 
-  overflow: visible; 
+  position: relative; /* Establecer posición relativa */
+  z-index: 1; /* Asegurar que el VaSelect esté en un nivel superior */
+  overflow: visible; /* Permitir que el VaSelect despliegue fuera de su contenedor */
+}
+
+.custom-header {
+  font-size: 2.5rem; /* Adjust the font size as needed */
+  font-weight: bold; /* Optional: to make the text bold */
+}
+
+/* Media Queries */
+@media (max-width: 1024px) {
+  .button-view,
+  .clear-button {
+    width: 100%;
+    margin: 0.5rem 0;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+  }
+
+  .group-title {
+    font-size: 1rem;
+  }
+
+  .custom-header {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .button-view,
+  .clear-button {
+    width: 100%;
+    margin: 0.5rem 0;
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+  }
+
+  .group-title {
+    font-size: 0.875rem;
+  }
+
+  .custom-header {
+    font-size: 1.25rem;
+  }
+}
+
+@media (max-width: 500px) {
+  .button-view,
+  .clear-button {
+    width: 100%;
+    margin: 0.5rem 0;
+    padding: 0.25rem 0.5rem;
+    font-size: 0.75rem;
+  }
+
+  .group-title {
+    font-size: 0.75rem;
+  }
+
+  .custom-header {
+    font-size: 1rem;
+  }
 }
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <footer class="fixed bottom-0 left-0 bg-beige shadow p-4 dark:bg-gray-800 w-full">
+  <footer class="fixed bottom-0 left-0 bg-beige shadow p-4 dark:bg-gray-800 w-full mt-6">
     <div class="max-w-screen-xl mx-auto flex flex-col md:flex-row items-center justify-between">
       <span class="text-sm text-gray-500 dark:text-gray-400">
         {{ $t('footer.copyright') }} <a href="/" class="hover:underline">Hackaton F5</a>. {{ $t('footer.all_rights_reserved') }}.
@@ -21,12 +21,3 @@ export default {
   name: 'Footer'
 }
 </script>
-
-<style scoped>
-img{
-  height: 4rem;
-
-}
-
-
-</style>
