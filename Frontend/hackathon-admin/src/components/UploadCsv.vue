@@ -5,7 +5,7 @@
         <i class="fa fa-upload upload-icon"></i>
         <input class="upload-button" type="file" @change="handleFileUpload" />
         <button class="upload-button" @click="submitFile"> {{ $t('upload.uploadButton') }}</button>
-        <p class="upload-message" v-if="message">{{ $t('message') }}</p>
+        <p class="upload-message" v-if="message">{{ message }}</p>
       </div>
     </div>
     <div class="csv-preview" v-if="csvData.length > 0">
