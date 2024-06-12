@@ -4,7 +4,10 @@ import router from './router';
 import './assets/styles.css'
 import i18n from './i18n';
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> main
 // Importa las dependencias de Font Awesome
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
@@ -14,7 +17,10 @@ import { faArrowUp } from '@fortawesome/free-solid-svg-icons';
 library.add(faArrowUp);
 
 const app = createApp(App);
+<<<<<<< HEAD
 // Registra el componente FontAwesomeIcon globalmente
+=======
+>>>>>>> main
 app.component('font-awesome-icon', FontAwesomeIcon);
 app.use(router);
 app.use(i18n);

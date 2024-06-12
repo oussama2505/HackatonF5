@@ -12,7 +12,7 @@
       async clearTable() {
         try {
           const response = await axios.delete('http://localhost:4000/api/clear');
-          alert(response.data.message);
+          /* alert(response.data.message); */
           location.reload();
         } catch (error) {
           console.error('Error clearing table:', error);
