@@ -130,7 +130,7 @@ A continuación encontrarán la lista detallada de cada uno de los integrantes e
 
 ## Mención especial:
 
-<img src="./Frontend/hackathon-admin/src/assets/f5.png" />
+<img src="./Frontend/hackathon-admin/src/assets/f55.png" />
 
 
 <p align="justify">
