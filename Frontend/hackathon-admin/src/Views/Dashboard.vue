@@ -2,7 +2,6 @@
   <Header />
   <div>
     <UploadCsv />
-    <Footer />
   </div>
   <Footer />
 </template>

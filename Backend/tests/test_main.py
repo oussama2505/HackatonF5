@@ -3,16 +3,18 @@ import pytest
 from flask import Flask, jsonify, request
 from flask_jwt_extended import create_access_token
 import json
-from app.main import app  # Ajusta esta línea según la estructura de tu proyecto
+from app.main import app  
 
 @pytest.fixture
 def client():
     app.config['TESTING'] = True
-    with app.test_client() as client:
+    with app.test_client() as client: ## coloca la app en modo testin como cliente real y ejecuta sin necesidad dser el servidor real.
         yield client
 
+
+## Verificar si el login es correcto con los datos correctos.
 def test_login_success(client):
-    response = client.post('/api/login', json={
+    response = client.post('/api/login', json={ ##voy a utilizar el client que viene de fixture para realizar una solicitud POST a la ruta /api/login.
         'email': 'elias@elias.com',
         'password': '123456'
     })
@@ -20,6 +22,7 @@ def test_login_success(client):
     data = json.loads(response.data)
     assert 'access_token' in data
 
+##Verificar si el usuario y contraseña no son correctos, deberia fallar
 def test_login_failure(client):
     response = client.post('/api/login', json={
         'email': 'elias@elias.com',
@@ -29,6 +32,7 @@ def test_login_failure(client):
     data = json.loads(response.data)
     assert data['msg'] == 'Bad email or password'
 
+## Voy a probar que el token se utilice para entrar en los sitios con autorizacion
 def test_protected_route_access(client):
     response = client.post('/api/login', json={
         'email': 'elias@elias.com',

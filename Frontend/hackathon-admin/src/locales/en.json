@@ -57,7 +57,9 @@
 		"showGroups":"Show Groups",
 		"downloadGroups":"Download CSV",
 		"revision_P1":"Review the generated groups.",
-		"revision_P2":"If you agree with these groups, you can download them in CSV format for later use in the following button"
+		"revision_P2":"If you agree with these groups, you can download them in CSV format for later use in the following button",
+    	"yes": "Yes",
+    	"no": "No"
 	  },
 	  "table": {
 		"group": "Group",
@@ -67,6 +69,9 @@
 		"front": "Front",
 		"back": "Back",
 		"bootcamp": "Bootcamp"
+  },
+  "modals": {
+    "confirmDeleteTitle": "Confirm Deletion",
+    "confirmDeleteMessage": "Are you sure you want to delete all items?"
   }
   }
-  

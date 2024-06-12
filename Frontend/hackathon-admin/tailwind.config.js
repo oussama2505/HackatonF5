@@ -8,6 +8,7 @@ module.exports = {
         'light-gray':'#C3C2BB',
         'dark-gray':'#585858',
         'beige':'#D7D8B6',
+        'light-beige':'#EAEAFA'
       },
       fontFamily:{
         custom:['abel','san-serif'],

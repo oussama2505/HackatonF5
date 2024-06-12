@@ -4,7 +4,8 @@
     <main class="flex-grow">
 
       <div class="content-buttons">
-        <ClearTableButton />
+        <!-- <ClearTableButton /> -->
+        <ArrowUp />
         <TeamDetail />
       </div>
       
@@ -21,6 +22,7 @@ import Header from '../components/Header.vue';
 import Footer from '../components/Footer.vue';
 import TeamDetail from '../components/TeamDetail.vue';
 import ClearTableButton from '../components/ClearTableButton.vue';
+import ArrowUp from '../components/ArrowUp.vue';
 </script>
 
 <style scoped>

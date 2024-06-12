@@ -1,6 +1,6 @@
 {
 	"about": {
-	  "title": "Sobre Nosotr@s",
+	  "title": "Sobre Nosotros/as",
 	  "description1": "Somos estudiantes de un bootcamp trabajando en un proyecto para crear una aplicación que forma grupos a partir de una lista de personas.",
 	  "description2": "Nuestra empresa, NextGen Technology, se dedica a proporcionar soluciones innovadoras que ayudan a nuestros clientes a tener éxito.",
 	  "description3": "Con nuestra aplicación, puedes crear y gestionar grupos fácilmente para mejorar la colaboración y la productividad.",
@@ -57,7 +57,9 @@
 		"showGroups":"Mostrar Grupos",
 		"downloadGroups":"Descargar CSV",
 		"revision_P1":"Revise los grupos generados.",
-		"revision_P2":"Si está de acuerdo con estos grupos puede descargarlos en formato CSV para su posterior utilización en el siguiente botón"
+		"revision_P2":"Si está de acuerdo con estos grupos puede descargarlos en formato CSV para su posterior utilización en el siguiente botón",
+		"yes": "Sí",
+    	"no": "No"
 	  },
 	  "table": {
 		"group": "Grupo",
@@ -67,6 +69,9 @@
 		"front": "Front",
 		"back": "Back",
 		"bootcamp": "Bootcamp"
-	  }
+	  },
+  "modals": {
+    "confirmDeleteTitle": "Confirmar eliminación",
+    "confirmDeleteMessage": "¿Estás seguro de que deseas eliminar todos los elementos?"
   }
-  
+  }
