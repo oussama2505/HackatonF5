@@ -16,3 +16,8 @@ body {
   .flex-grow {
     flex-grow: 1;
   }
+
+  button {
+    width: 10rem;
+    height: 3rem;
+  }

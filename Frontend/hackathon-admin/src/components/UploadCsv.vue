@@ -5,7 +5,7 @@
         <i class="fa fa-upload upload-icon"></i>
         <input class="upload-button" type="file" @change="handleFileUpload" />
         <button class="upload-button" @click="submitFile"> {{ $t('upload.uploadButton') }}</button>
-        <p class="upload-message" v-if="message">{{ message }}</p>
+        <p class="upload-message" v-if="message">{{ $t('message') }}</p>
       </div>
     </div>
     <div class="csv-preview" v-if="csvData.length > 0">
@@ -91,10 +91,12 @@ const submitFile = async () => {
 <style scoped>
 .upload-file-container {
   display: flex;
+  flex-direction: row;
   justify-content: space-around;
   align-items: flex-start;
   margin: 0 auto;
   width: 80%; /* Ajusta el tamaño según tus necesidades */
+  flex-wrap: wrap; /* Permitir flex wrap para ajustar los elementos */
 }
 
 .upload-file-box {
@@ -160,5 +162,38 @@ th, td {
 
 th {
   background-color: #f4f4f4;
+}
+
+/* Media Queries */
+@media (max-width: 1024px) {
+  .upload-file-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .upload-file-box,
+  .csv-preview {
+    width: 80%;
+  }
+}
+
+@media (max-width: 768px) {
+  .upload-file-box,
+  .csv-preview {
+    width: 100%;
+    margin: 1rem 0;
+  }
+
+  .upload-icon {
+    font-size: 3rem; /* Ajusta el tamaño del icono */
+  }
+
+  .upload-button {
+    padding: 8px 16px; /* Ajusta el tamaño del botón */
+  }
+
+  .upload-message {
+    font-size: medium;
+  }
 }
 </style>
