@@ -69,6 +69,14 @@
 		"yes": "Sí",
     	"no": "No"
 	  },
+	  "contact": {
+		"title": "Contáctenos",
+		"name": "Nombre",
+		"email": "Correo Electrónico",
+		"subject": "Asunto",
+		"message": "Mensaje",
+		"submit": "Enviar"
+	  },
 	  "table": {
 		"group": "Grupo",
 		"name": "Nombre",

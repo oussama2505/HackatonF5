@@ -13,7 +13,7 @@
       <button class="button-view" @click="downloadCSV">{{ $t('buttons.downloadGroups') }}</button>
 
       <div v-for="(group, groupIndex) in filteredGroupsByCard" :key="groupIndex">
-        <VaCard class="mb-4 border-b-2">
+        <VaCard class="mb-8 border-b-2">
           <h3 class="group-title">Grupo {{ groupIndex + 1 }}</h3>
           <VaDataTable class="bg-light-beige text-l mb-12"
             v-if="group.length"
