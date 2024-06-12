@@ -1,14 +1,16 @@
 # Hackaton Organizer
 
-<img src="./Frontend/hackathon-admin/src/assets/logo.png"/>
+<p align="center">
+  <img src="./Frontend/hackathon-admin/src/assets/logo.png" alt="Hackathon Organizer Logo"/>
+</p>
 
 ## Indice
 
-1. Introducción
-2. Tecnologías
-3. Funcionalidad del proyecto
-4. Vistas
-5. Equipo de desarrollo
+1. [Introducción](#introducción)
+2. [Tecnologías](#tecnologías)
+3. [Funcionalidad del proyecto](#funcionalidad-del-proyecto)
+4. [Vistas](#vistas)
+5. [Equipo de desarrollo](#equipo-de-desarrollo)
 
 ## Introducción
 
@@ -87,7 +89,7 @@ El eje central de la aplicación, esta vista contiene, no solo el header y el fo
 
 ## Equipo de desarrollo:
 
-- Elías Riquelme (scrum master)
-- Johan Sebastián Rodríguez (product owner)
-- Agustina Calleja (web developer)
-- Oussama Brahmi (web developer)
+- [Elías Riquelme (scrum master)](https://www.linkedin.com/in/elias-javier-riquelme-b62655297/)
+- [Johan Sebastián Rodríguez (product owner)](https://www.linkedin.com/in/johan-sebastian-rodriguez-g/)
+- [Agustina Calleja (web developer)](https://www.linkedin.com/in/tina-calleja/)
+- [Oussama Brahmi (web developer)](https://www.linkedin.com/in/oussama-brahmi-b1551a280/)
