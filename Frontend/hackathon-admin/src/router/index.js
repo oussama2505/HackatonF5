@@ -5,6 +5,7 @@ import Dashboard from '../Views/Dashboard.vue';
 import Groups from '../Views/Groups.vue';
 import Login from '../components/Login.vue'; // Importa el componente Login
 import About from '../Views/About.vue';
+import Contact from '../Views/Contact'
 
 const routes = [
   {
@@ -35,8 +36,13 @@ const routes = [
     name: 'Home',
     component: Home,
     meta: { requiresAuth: true }
+  },
+  {
+    path: '/contact',
+    name: 'Contact',
+    component: Contact,
+    meta: { requiresAuth: true }
   }
-
 ];
 
 const router = createRouter({

@@ -4,11 +4,14 @@
       <span class="text-sm text-gray-500 dark:text-gray-400">
         {{ $t('footer.copyright') }} <a href="/" class="hover:underline">Hackaton F5</a>. {{ $t('footer.all_rights_reserved') }}.
       </span>
+
+      <img src="@/assets/f5.png" alt="Logo" class="h-10 w-auto mx-auto md:mx-0" />
+
       <ul class="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-500 dark:text-gray-400 md:mt-0">
+        <li><router-link to="/contact" class="hover:underline me-4 md:me-6">{{ $t('footer.contact') }}</router-link></li>
         <li><router-link to="/about" class="hover:underline me-4 md:me-6">{{ $t('footer.aboutUs') }}</router-link></li>
         <li><a href="#" class="hover:underline me-4 md:me-6">{{ $t('footer.privacy_policy') }}</a></li>
         <li><a href="#" class="hover:underline me-4 md:me-6">{{ $t('footer.licensing') }}</a></li>
-        <li><a href="#" class="hover:underline">{{ $t('footer.contact') }}</a></li>
       </ul>
     </div>
   </footer>
