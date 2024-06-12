@@ -58,19 +58,27 @@ git clone: https://github.com/oussama2505/HackatonF5.git
 
 - Una vez cargado el archivo, pulsando este botón se despliega un protocolo que recorre los elementos y los pinta dinámicamente en cartas.
 
-<img src="./Frontend/hackathon-admin/src/assets/Grupos.png" />
+<img src="./Frontend/hackathon-admin/src/assets/Dashboard_vista.png" />
+
+Además se ha adicionado una vista del archivo en el formato original que sirva de apoyo para el administrador, y este pueda apropiarse de los datos que quiere subir al sistema. 
 
 5. Borrar todos los datos:
 
 - Este botón cumple la función de eliminar la carga de los archivos. Elimina la base de datos que corre en el Backend en remoto, haciendo que para la realización de un nuevo despliegue sea necesario cumplir con el protocolo de carga desde cero.
 
+<img src="./Frontend/hackathon-admin/src/assets/borrar_todos.png"/>
+
 6. Logout:
 
 - Termina el proceso que ha partido desde el inicio de sesión. Esto hace que el administrador pueda controlar el tiempo invertido en su estancia dentro de la aplicación.
 
+<img src="./Frontend/hackathon-admin/src/assets/cerrar_sesion.png" />
+
 7. About us:
 
 - Este apartado genera una vista adicional que muestra directamente enlaces de contacto de todo el equipo de desarrollo.
+
+<img src="./Frontend/hackathon-admin/src/assets/sobre_nosotros.png" />
 
 
 ## Vistas:
@@ -89,7 +97,18 @@ El eje central de la aplicación, esta vista contiene, no solo el header y el fo
 
 ## Equipo de desarrollo:
 
+
+A continuación encontrarán la lista detallada de cada uno de los integrantes en la construcción del proyecto, con un enlace a su contacto. 
+
 - [Elías Riquelme (scrum master)](https://www.linkedin.com/in/elias-javier-riquelme-b62655297/)
 - [Johan Sebastián Rodríguez (product owner)](https://www.linkedin.com/in/johan-sebastian-rodriguez-g/)
 - [Agustina Calleja (web developer)](https://www.linkedin.com/in/tina-calleja/)
 - [Oussama Brahmi (web developer)](https://www.linkedin.com/in/oussama-brahmi-b1551a280/)
+
+## Mención especial:
+
+<img src="./Frontend/hackathon-admin/src/assets/f5.png" />
+
+Como equipo de trabajo, queremos extender nuestro más sincero agradecimiento a los gestores del proyecto. La confianza, el apoyo constante y la retroalimentación entregada en momentos específicos hicieron del proceso un momento muy importante dentro del instante formativo. 
+
+Por parte del stakeholder (Andrés Patiño), y la organización en concreto, Somos F5, el empeño por entregar las herramientas suficientes y mantener la motivación en lo más alto, han alimentado el espíritu competitivo del grupo que con esmero ha conseguido entregar un producto mínimo viable en el tiempo acordado. 
