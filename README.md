@@ -13,14 +13,13 @@
 5. [Equipo de desarrollo](#equipo-de-desarrollo)
 
 ## Introducción
-
+<p align="justify">
 Basado en el requerimiento por parte de la organización "Somos F5", se ha creado Hackaton Organizer, una aplicación de manejo interno cuyo eje fundamental es la estructuración de un selector inteligente para el reparto de grupos en la siguiente cumbre de coders a nivel nacional. Los organizadores del encuentro masivo de desarrolladores han puntualizado falencias representativas en su estructura de distribución de los diferentes grupos, y por ende han confiado en la lógica de programación para generar un sistema que tome parámetros definidos, como por ejemplo: un límite de personas por promoción, y equilibrar los niveles de Frontend junto con Backend para hacer de la competencia una lucha de conocimientos lo más equilibrada posible. Este a su vez deberá hacer cumplir con las expectativas que se han trazado en el mercado del planteamiento y mostrar un producto mucho más sensato y convincente que el de los años inmediatamente anteriores. 
 
 Hackaton Organizer tiene como finalidad tomar una base de datos general, proporcionada por cada uno de los responsables de zona y reagrupada posteriormente, para alojarlos en un sistema que sea capaz de procesarlo, y lanzar peticiones para la confección de la misma. Todo esto al alcance de click, que depura la labor, y hace mucho más confiable el ejercicio en beneficio de todos los implicados.
 
-Paleta de colores:
+</p>
 
---------------------
 
 ### Acceso directo 
 
@@ -48,40 +47,68 @@ git clone: https://github.com/oussama2505/HackatonF5.git
 
 3. Seleccionar un archivo:
 
+<p align="justify">
+
 - A través de una carga de archivo, el administrador logueado podrá subir al sistema en comunicación con el Backend un documento que contenga los campos pedidos, con los usuarios o competidores del evento.
+</p>
 
 <img src="./Frontend/hackathon-admin/src/assets/Dashboard.png" />
 
+<p align="justify">
+
 - El UploadCsv lo que permite es almacenar el archivo en la base de datos que a partir de ese momento va a ser consultada por el sistema.
+</p>
 
 4. Mostrar grupos:
 
+<p align="justify">
+
 - Una vez cargado el archivo, pulsando este botón se despliega un protocolo que recorre los elementos y los pinta dinámicamente en cartas.
+
+</p>
 
 <img src="./Frontend/hackathon-admin/src/assets/Dashboard_vista.png" />
 
-Además se ha adicionado una vista del archivo en el formato original que sirva de apoyo para el administrador, y este pueda apropiarse de los datos que quiere subir al sistema. 
+<p align="justify">
+
+Además se ha adicionado una vista del archivo en el formato original que sirva de apoyo para el administrador, y este pueda apropiarse de los datos que quiere subir al sistema.
+
+</p>
 
 5. Borrar todos los datos:
 
+<p align="justify">
+
 - Este botón cumple la función de eliminar la carga de los archivos. Elimina la base de datos que corre en el Backend en remoto, haciendo que para la realización de un nuevo despliegue sea necesario cumplir con el protocolo de carga desde cero.
+</p>
 
 <img src="./Frontend/hackathon-admin/src/assets/borrar_todos.png"/>
 
 6. Logout:
 
+<p align="justify">
+
 - Termina el proceso que ha partido desde el inicio de sesión. Esto hace que el administrador pueda controlar el tiempo invertido en su estancia dentro de la aplicación.
 
+</p>
 
 <img src="./Frontend/hackathon-admin/src/assets/cerrar_sesion.png" />
 
+<p align="justify">
+
 - Este apartado ha incluido una ventana modal que muestra al administrador una advertencia, en donde se detalla a precisión que la aceptación del proceso eliminará de la base de datos el archivo que se ha cargado previamente en el Dashboard.
+
+</p>
 
 <img src="./Frontend/hackathon-admin/src/assets/Modal.png" />
 
 7. About us:
 
+<p align="justify">
+
 - Este apartado genera una vista adicional que muestra directamente enlaces de contacto de todo el equipo de desarrollo.
+
+</p>
 
 <img src="./Frontend/hackathon-admin/src/assets/sobre_nosotros.png" />
 
@@ -90,11 +117,19 @@ Además se ha adicionado una vista del archivo en el formato original que sirva 
 
 ### Home: 
 
+<p align="justify">
+
 Esta vista cuenta con 3 componentes: el header, el login y el footer. Su principal objetivo es mostrar de forma interna un formulario de logueo que cuenta con dos campos, el de email y el de contraseña. Una vez identificados tendrá el administrador un acceso a la aplicación para la carga del archivo que contendrá los campos necesarios, con los usuarios verificados que ya han notificado su presencia en el evento. 
+
+</p>
 
 ### Dashboard: 
 
+<p align="justify">
+
 En esta vista se muestra una interfaz de carga del archivo que contiene los datos que el sistema procesará. El encargado de la subida podrá ver un botón de selección que inspeccionará los archivos que estén almacenados en un disco duro (interno, o externo) que cumpla con las características solicitadas. Esta vista contiene tres componentes: el header, el UploadCsv y el footer.
+
+</p>
 
 ### Grupos: 
 
