@@ -27,6 +27,14 @@
 	  "licensing": "Licensing",
 	  "contact": "Contact"
 	},
+	"contact": {
+	  "title": "Contact Us",
+	  "name": "Name",
+	  "email": "Email",
+	  "subject": "Subject",
+	  "message": "Message",
+	  "submit": "Submit"
+	},
 	"groups": {
 		"name":"Name",
 		"group": "Group",

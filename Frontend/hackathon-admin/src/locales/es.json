@@ -11,6 +11,14 @@
 	  "member3": "Sebastián Rodriguez",
 	  "member4": "Tina Calleja"
 	},
+	"contact": {
+	  "title": "Contáctenos",
+	  "name": "Nombre",
+	  "email": "Correo Electrónico",
+	  "subject": "Asunto",
+	  "message": "Mensaje",
+	  "submit": "Enviar"
+	},
 	"header": {
 	  "home": "Inicio",
 	  "dashboard": "Tablero",

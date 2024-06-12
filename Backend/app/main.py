@@ -1,5 +1,5 @@
 from flask import Flask, jsonify, request
-
+from flask_mail import Mail, Message
 from flask_cors import CORS
 from flask_swagger_ui import get_swaggerui_blueprint
 import csv
@@ -16,6 +16,13 @@ app = Flask(__name__)
 CORS(app)
 
 
+app.config['MAIL_SERVER'] = 'smtp.gmail.com'
+app.config['MAIL_PORT'] = 587
+app.config['MAIL_USE_TLS'] = True
+app.config['MAIL_USERNAME'] = ''
+app.config['MAIL_PASSWORD'] = ''
+
+mail = Mail(app)
 ###
 app.config['JWT_SECRET_KEY'] = 'your_jwt_secret_key'
 jwt = JWTManager(app)
@@ -33,7 +40,7 @@ swagger_ui_blueprint = get_swaggerui_blueprint(
 )
 app.register_blueprint(swagger_ui_blueprint, url_prefix=SWAGGER_URL)
 
-#Esto esta comentado ya que las pruebas unitarias no funcionan
+
 def connect_db(): 
     return mysql.connector.connect(
         host="localhost",
@@ -43,6 +50,28 @@ def connect_db():
         database="alumnos"
     )  
 ####
+
+@app.route('/send-email', methods=['POST'])
+def send_email():
+    data = request.get_json()
+    name = data.get('name')
+    email = data.get('email')
+    subject = data.get('subject')
+    message = data.get('message')
+
+    msg = Message(subject=subject,
+                  sender=app.config['MAIL_USERNAME'],
+                  recipients=[''])
+    msg.body = f"Name: {name}\nEmail: {email}\n\n{message}"
+    
+     # Enviar el correo electrónico
+    try:
+        mail.send(msg)
+    except Exception as e:
+        return jsonify({"message": f"Error sending email: {str(e)}"}), 500
+
+    return jsonify({"message": "Email sent successfully!"}), 200
+
 
 @app.route('/api/login', methods=['POST'])
 def login():
