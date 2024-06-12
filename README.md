@@ -72,7 +72,12 @@ Además se ha adicionado una vista del archivo en el formato original que sirva 
 
 - Termina el proceso que ha partido desde el inicio de sesión. Esto hace que el administrador pueda controlar el tiempo invertido en su estancia dentro de la aplicación.
 
+
 <img src="./Frontend/hackathon-admin/src/assets/cerrar_sesion.png" />
+
+- Este apartado ha incluido una ventana modal que muestra al administrador una advertencia, en donde se detalla a precisión que la aceptación del proceso eliminará de la base de datos el archivo que se ha cargado previamente en el Dashboard.
+
+<img src="./Frontend/hackathon-admin/src/assets/Modal.png" />
 
 7. About us:
 
