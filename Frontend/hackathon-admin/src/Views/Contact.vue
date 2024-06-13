@@ -43,10 +43,10 @@
   });
   
   const submitForm = () => {
-	// Aquí puedes manejar el envío del formulario, por ejemplo, enviando los datos a una API.
+	// Here you can handle the form submission, for example by sending the data to an API.
 	alert('Formulario enviado:\n' + JSON.stringify(form.value, null, 2));
 	
-	// Limpiar el formulario
+	// Clear the form
 	form.value.name = '';
 	form.value.email = '';
 	form.value.subject = '';

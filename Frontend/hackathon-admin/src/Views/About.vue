@@ -32,7 +32,7 @@
   
   const { t } = useI18n();
   
-  // Definir los miembros del equipo con sus enlaces de LinkedIn
+  // Define team members with their LinkedIn links
   const teamMembers = [
 	{ 
 	  name: t('Elías Riquelme'), 

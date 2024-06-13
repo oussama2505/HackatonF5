@@ -95,15 +95,15 @@ const submitFile = async () => {
   justify-content: space-around;
   align-items: flex-start;
   margin: 0 auto;
-  width: 80%; /* Ajusta el tamaño según tus necesidades */
-  flex-wrap: wrap; /* Permitir flex wrap para ajustar los elementos */
+  width: 80%; /* Adjust the size according to your needs */
+  flex-wrap: wrap; /* Allow flex wrap to wrap elements */
 }
 
 .upload-file-box {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 45%; /* Ajusta el tamaño según tus necesidades */
+  width: 45%; /* Adjust the size according to your needs */
   min-height: 30rem;
   border: 2px dashed #ccc;
   border-radius: 10px;
@@ -118,9 +118,9 @@ const submitFile = async () => {
 }
 
 .upload-icon {
-  font-size: 4rem; /* Tamaño del icono */
+  font-size: 4rem; /* Icon size */
   margin-bottom: 20px;
-  color: #888; /* Color del icono */
+  color: #888; /* Icon color */
 }
 
 .upload-button {
@@ -185,11 +185,11 @@ th {
   }
 
   .upload-icon {
-    font-size: 3rem; /* Ajusta el tamaño del icono */
+    font-size: 3rem; /* Adjust the icon size */
   }
 
   .upload-button {
-    padding: 8px 16px; /* Ajusta el tamaño del botón */
+    padding: 8px 16px; /* Adjust the button size */
   }
 
   .upload-message {

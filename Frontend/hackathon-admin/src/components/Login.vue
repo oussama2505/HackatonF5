@@ -48,7 +48,7 @@ const logo = require('../assets/logo.png');
 
 const login = async () => {
   if (!email.value || !password.value) {
-    return; // Impide el envío del formulario si los campos están vacíos
+    return; // Prevent form submission if fields are empty
   }
   try {
     const response = await axios.post('http://localhost:4000/api/login', {
@@ -56,7 +56,7 @@ const login = async () => {
       password: password.value
     });
     localStorage.setItem('token', response.data.access_token);
-    // Redirigir a una página protegida
+    // Redirect to a protected page
    router.push('/dashboard');
   } catch (error) {
     alert(t('login.invalidCredentials'));
@@ -70,8 +70,4 @@ const login = async () => {
 width: 40%;
 height: 40%;
 }
-
-
-
-
 </style>

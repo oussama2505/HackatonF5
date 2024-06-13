@@ -210,9 +210,9 @@ const customFilteringFn = (source, cellData) => {
 }
 
 .va-select-wrapper {
-  position: relative; /* Establecer posición relativa */
-  z-index: 1; /* Asegurar que el VaSelect esté en un nivel superior */
-  overflow: visible; /* Permitir que el VaSelect despliegue fuera de su contenedor */
+  position: relative; /* Set relative position */
+  z-index: 1; /* Ensure VaSelect is at a higher level */
+  overflow: visible; /* Allow VaSelect to deploy outside of its container */
 }
 
 .custom-header {

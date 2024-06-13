@@ -6,28 +6,28 @@
 <script setup>
 import { ref, onMounted, onBeforeUnmount } from 'vue';
 const showScrollButton = ref(false);
-// Función para hacer scroll hacia arriba
+// Scroll up function
 const scrollToTop = () => {
   window.scrollTo({
     top: 0,
     behavior: "smooth"
   });
 };
-// Función que muestra u oculta el botón de volver arriba según la posición del scroll
+// Function that shows or hides the back to top button depending on the scroll position
 const handleScroll = () => {
-  if (window.scrollY > 300) { // Cambia 300 por la posición deseada para mostrar el botón
+  if (window.scrollY > 300) { // Change 300 to the desired position to display the button
     showScrollButton.value = true;
   } else {
     showScrollButton.value = false;
   }
 };
 
-// Añade un listener para el evento scroll al montar el componente
+// Add a listener for the scroll event when mounting the component
 onMounted(() => {
   window.addEventListener("scroll", handleScroll);
 });
 
-// Elimina el listener cuando el componente se desmonta
+// Remove the listener when the component is unmounted
 onBeforeUnmount(() => {
   window.removeEventListener("scroll", handleScroll);
 });
