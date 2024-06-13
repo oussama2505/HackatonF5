@@ -117,7 +117,7 @@ const filteredGroupsByCard = computed(() => {
 });
 
 const columns = [
-  { key: "groupIndex", label: "table.group" },
+  /* { key: "groupIndex", label: "table.group" }, */
   { key: "nombre", label: "table.name" },
   { key: "apellido", label: "table.surname" },
   { key: "email", label: "table.email" },
