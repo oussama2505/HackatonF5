@@ -125,7 +125,6 @@ def upload_file():
         return jsonify({'error': ('File format not allowed, please upload a .csv file')}), 400
 
 
-
 @app.route('/api/grupos', methods=['GET'])
 def get_grupos():
     db = connect_db()
