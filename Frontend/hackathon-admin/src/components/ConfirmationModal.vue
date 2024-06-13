@@ -1,7 +1,7 @@
 <template>
     <div v-if="visible" class="modal">
       <div class="modal-content">
-        <h3>{{ title }}</h3>
+        <!-- <h3>{{ title }}</h3> -->
         <p>{{ message }}</p>
         <div class="modal-buttons">
           <button @click="confirm">{{ $t('buttons.yes') }}</button>
@@ -44,6 +44,9 @@
     padding: 20px;
     border-radius: 8px;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
 
   .modal-buttons button {
@@ -52,6 +55,8 @@
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    width: 8rem;
+    height: 3rem;
   }
 
   .modal-buttons button:first-child {
@@ -62,9 +67,10 @@
   .modal-buttons button:last-child {
     background-color: #ccc;
   }
+
   .modal-buttons{
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
   }
   </style>
