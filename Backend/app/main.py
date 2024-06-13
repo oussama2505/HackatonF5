@@ -135,8 +135,8 @@ def get_grupos():
     random.shuffle(personas)  # Mezcla aleatoriamente las personas
 
     total_personas = len(personas)
-    min_grupo = 8
-    max_grupo = 8
+    min_grupo = 7
+    max_grupo = 7
     
     # Calcula el número de grupos necesarios
     num_grupos = (total_personas + min_grupo - 1) // min_grupo
