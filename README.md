@@ -6,11 +6,13 @@
 
 ## Index
 
-1. [Introduction](#introducción)
-2. [Technologies](#tecnologías)
-3. [Project Features](#funcionalidad-del-proyecto)
-4. [Views](#vistas)
-5. [Development team](#equipo-de-desarrollo)
+
+1. [Introduction](#introduction)
+2. [Technologies](#technologies)
+3. [Project Features](#project-features)
+4. [Views](#views)
+5. [Development team](#development-team)
+
 
 ## Introduction
 <p align="justify">
