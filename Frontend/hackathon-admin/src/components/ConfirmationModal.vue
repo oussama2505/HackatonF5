@@ -62,4 +62,9 @@
   .modal-buttons button:last-child {
     background-color: #ccc;
   }
+  .modal-buttons{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
   </style>
