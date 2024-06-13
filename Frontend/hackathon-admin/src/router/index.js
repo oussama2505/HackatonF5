@@ -32,6 +32,12 @@ const routes = [
     meta: { requiresAuth: true }
   },
   {
+    path: '/contact',
+    name: 'Contact',
+    component: Contact,
+    meta: { requiresAuth: true }
+  },
+  {
     path: '/',
     name: 'Home',
     component: Home,

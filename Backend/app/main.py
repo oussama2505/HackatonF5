@@ -15,7 +15,7 @@ app = Flask(__name__)
 CORS(app)
 
 
-###
+
 app.config['JWT_SECRET_KEY'] = 'your_jwt_secret_key'
 app.config['JWT_ACCESS_TOKEN_EXPIRES'] = timedelta(hours=1)
 jwt = JWTManager(app)
@@ -33,7 +33,7 @@ swagger_ui_blueprint = get_swaggerui_blueprint(
 )
 app.register_blueprint(swagger_ui_blueprint, url_prefix=SWAGGER_URL)
 
-#Esto esta comentado ya que las pruebas unitarias no funcionan
+
 def connect_db(): 
     return mysql.connector.connect(
         host="localhost",
@@ -204,4 +204,3 @@ def get_personas():
 
 if __name__ == "__main__":
     app.run(debug=True, port=4000, host="0.0.0.0")
-
